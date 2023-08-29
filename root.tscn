@@ -10,6 +10,7 @@ script = ExtResource("1_mi7j3")
 [node name="World" type="Node" parent="."]
 
 [node name="Polygon2D" parent="World" instance=ExtResource("2_g63x2")]
+polygon = PackedVector2Array(352, 112, 384, 173, 486, 167, 469, 126, 433, 100)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -7830.0
