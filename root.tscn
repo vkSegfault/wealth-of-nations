@@ -1,19 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnv01iru6ahk0"]
+[gd_scene load_steps=4 format=3 uid="uid://dnv01iru6ahk0"]
 
+[ext_resource type="Script" path="res://root.gd" id="1_mi7j3"]
 [ext_resource type="Texture2D" uid="uid://b6fm46ggdxs13" path="res://External_Resources/Blank_world_map_with_all_administrative_divisions.png" id="1_yvhn8"]
+[ext_resource type="PackedScene" uid="uid://blt2vstjbe4xj" path="res://province.tscn" id="2_g63x2"]
 
 [node name="Root" type="Node"]
+script = ExtResource("1_mi7j3")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-z_index = 1
-color = Color(0.341176, 0.603922, 0.294118, 1)
-polygon = PackedVector2Array(365, 107, 384, 173, 486, 167, 469, 126, 433, 100)
+[node name="World" type="Node" parent="."]
+
+[node name="Polygon2D" parent="World" instance=ExtResource("2_g63x2")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 offset_left = -7830.0
-offset_top = -1463.0
+offset_top = -1460.0
 offset_right = -3375.0
-offset_bottom = 675.0
+offset_bottom = 678.0
 scale = Vector2(4, 4)
 texture = ExtResource("1_yvhn8")

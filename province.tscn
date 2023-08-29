@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://blt2vstjbe4xj"]
+
+[ext_resource type="Script" path="res://province.gd" id="1_fs2fx"]
+
+[node name="Polygon2D" type="Polygon2D"]
+z_index = 1
+color = Color(0.341176, 0.603922, 0.294118, 1)
+polygon = PackedVector2Array(365, 107, 384, 173, 486, 167, 469, 126, 433, 100)
+script = ExtResource("1_fs2fx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(366, 108, 433, 101, 468, 125, 486, 165, 386, 173)
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

@@ -18,3 +18,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 MapDrawer="*res://Code/map_drawer.gd"
+MapLoader="*res://Code/map_loader.gd"
