@@ -1,21 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnv01iru6ahk0"]
+[gd_scene load_steps=3 format=3 uid="uid://dnv01iru6ahk0"]
 
-[ext_resource type="Script" path="res://root.gd" id="1_mi7j3"]
+[ext_resource type="Script" path="res://Code/root.gd" id="1_aks8m"]
 [ext_resource type="Texture2D" uid="uid://b6fm46ggdxs13" path="res://External_Resources/Blank_world_map_with_all_administrative_divisions.png" id="1_yvhn8"]
-[ext_resource type="PackedScene" uid="uid://blt2vstjbe4xj" path="res://province.tscn" id="2_g63x2"]
 
 [node name="Root" type="Node"]
-script = ExtResource("1_mi7j3")
+script = ExtResource("1_aks8m")
 
-[node name="World" type="Node" parent="."]
+[node name="WorldDrawDebug" type="Node" parent="."]
 
-[node name="Polygon2D" parent="World" instance=ExtResource("2_g63x2")]
-polygon = PackedVector2Array(352, 112, 384, 173, 486, 167, 469, 126, 433, 100)
+[node name="Node2D" type="Node2D" parent="WorldDrawDebug"]
+visible = false
+
+[node name="Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0, 0.529412, 0.0431373, 1)
+polygon = PackedVector2Array(424, 104, 384, 104, 344, 112, 368, 184, 408, 176, 472, 176, 488, 160, 456, 128, 440, 128, 408, 128)
+
+[node name="Tricity" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 1, 0.482353, 1)
+polygon = PackedVector2Array(408, 128, 440, 128, 424, 104)
+
+[node name="WestPomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.258824, 1, 0.156863, 1)
+polygon = PackedVector2Array(232, 160, 240, 200, 224, 216, 256, 232, 368, 184, 344, 112, 320, 128)
+
+[node name="WorldInstances" type="Node" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -7830.0
-offset_top = -1460.0
-offset_right = -3375.0
-offset_bottom = 678.0
+z_index = -1
+offset_left = -7840.0
+offset_top = -1456.0
+offset_right = -3385.0
+offset_bottom = 682.0
 scale = Vector2(4, 4)
 texture = ExtResource("1_yvhn8")

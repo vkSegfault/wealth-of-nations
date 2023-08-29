@@ -1,13 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://blt2vstjbe4xj"]
+[gd_scene load_steps=2 format=3 uid="uid://bg6mmmln2xxj5"]
 
-[ext_resource type="Script" path="res://province.gd" id="1_fs2fx"]
+[ext_resource type="Script" path="res://Code/province.gd" id="1_4rhro"]
 
-[node name="Polygon2D" type="Polygon2D"]
-z_index = 1
-color = Color(0.341176, 0.603922, 0.294118, 1)
-polygon = PackedVector2Array(368, 112, 384, 173, 486, 167, 469, 126, 433, 100)
-script = ExtResource("1_fs2fx")
+[node name="Province" type="Node"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[node name="Polygon2D" type="Polygon2D" parent="Node2D"]
+color = Color(0.286275, 0.572549, 0, 1)
+script = ExtResource("1_4rhro")
+
+[node name="Area2D" type="Area2D" parent="Node2D/Polygon2D"]
+
+[connection signal="mouse_entered" from="Node2D/Polygon2D/Area2D" to="Node2D/Polygon2D" method="_on_area_2d_mouse_entered"]

@@ -3,6 +3,8 @@ extends Polygon2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	# create CollisionPolygon2D needed for on_mouse_entered() signal of Area2D from exact vertices of Polygon2D itself
 	var vertices: PackedVector2Array = self.polygon
 	var collision_polygon_2d = CollisionPolygon2D.new()
 	collision_polygon_2d.polygon = vertices
