@@ -17,17 +17,15 @@ func _ready():
 		print("Province: {p} with coords: {c}".format({"p": i.name, "c": i.polygon}))
 		
 		var province_instance = province_scene.instantiate()
-		province_instance.get_child(0).get_child(0).province_name = i.name
+		province_instance.province_name = i.name  # for newer version
+		#province_instance.get_child(0).get_child(0).province_name = i.name
 		# get to the Polygon2D node
-		province_instance.get_child(0).get_child(0).polygon = i.polygon
+		province_instance.shape = i.polygon  # for newer version
+		#province_instance.get_child(0).get_child(0).polygon = i.polygon
 		add_child(province_instance)
-	
-	province_polygon.polygon = points
-	province_polygon.color = Color(1.0, 0, 0, 1)
-	add_child(province_polygon)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	province_polygon.polygon[2] += Vector2(0.2, 0.1)
+	pass
 	
