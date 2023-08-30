@@ -1,6 +1,6 @@
-extends Polygon2D
+extends Node
 
-
+var province_name: String = "NOT PROVIDED"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -16,7 +16,7 @@ func _process(delta):
 	pass
 
 func _on_area_2d_mouse_entered():
-	print("Entered Area2D")
+	print("Entered {p}".format({"p": province_name }))
 	
 	# example uf using global variable from autoloaded singleton code
 	print(MapLoader.GLOBAL)
