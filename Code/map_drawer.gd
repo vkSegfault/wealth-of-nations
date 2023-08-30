@@ -14,6 +14,11 @@ var province_scene = preload("res://province.tscn")
 func _ready():
 	# iterate over all drawed provinces and make actual logical Province out of vertices
 	for i in get_node("/root/Root/WorldDrawDebug/Node2D").get_children():
+		
+		# if it's not Polygon2D then it's some debug temp shit probablu and we don't care
+		if not (i is Polygon2D):
+			continue
+			
 		print("Province: {p} with coords: {c}".format({"p": i.name, "c": i.polygon}))
 		
 		var province_instance = province_scene.instantiate()

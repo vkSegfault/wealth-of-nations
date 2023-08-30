@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnv01iru6ahk0"]
+[gd_scene load_steps=4 format=3 uid="uid://dnv01iru6ahk0"]
 
 [ext_resource type="Script" path="res://Code/root.gd" id="1_aks8m"]
 [ext_resource type="Texture2D" uid="uid://b6fm46ggdxs13" path="res://External_Resources/Blank_world_map_with_all_administrative_divisions.png" id="1_yvhn8"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_c2vpa"]
 
 [node name="Root" type="Node"]
 script = ExtResource("1_aks8m")
@@ -9,7 +10,6 @@ script = ExtResource("1_aks8m")
 [node name="WorldDrawDebug" type="Node" parent="."]
 
 [node name="Node2D" type="Node2D" parent="WorldDrawDebug"]
-visible = false
 
 [node name="Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0, 0.529412, 0.0431373, 1)
@@ -23,9 +23,7 @@ polygon = PackedVector2Array(408, 128, 440, 128, 424, 104)
 color = Color(0.258824, 1, 0.156863, 1)
 polygon = PackedVector2Array(232, 160, 240, 200, 224, 216, 256, 232, 368, 184, 344, 112, 320, 128)
 
-[node name="WorldInstances" type="Node" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="WorldDrawDebug"]
 z_index = -1
 offset_left = -7840.0
 offset_top = -1456.0
@@ -33,3 +31,8 @@ offset_right = -3385.0
 offset_bottom = 682.0
 scale = Vector2(4, 4)
 texture = ExtResource("1_yvhn8")
+
+[node name="WorldInstances" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_c2vpa")
