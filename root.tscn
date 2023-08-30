@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/root.gd" id="1_aks8m"]
 [ext_resource type="Texture2D" uid="uid://b6fm46ggdxs13" path="res://External_Resources/Blank_world_map_with_all_administrative_divisions.png" id="1_yvhn8"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="3_c2vpa"]
+[ext_resource type="Script" path="res://Code/camera.gd" id="3_l3gn8"]
 
 [node name="Root" type="Node"]
 script = ExtResource("1_aks8m")
@@ -35,4 +35,4 @@ texture = ExtResource("1_yvhn8")
 [node name="WorldInstances" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_c2vpa")
+script = ExtResource("3_l3gn8")
