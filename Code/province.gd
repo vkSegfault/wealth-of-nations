@@ -23,8 +23,9 @@ func _on_area_2d_mouse_entered():
 	line.z_index = 2  # to draw focused border over other borders
 	
 	# both equivalent
-	emit_signal("mouse_entered_province_signal")
+	# emit_signal("mouse_entered_province_signal")
 	mouse_entered_province_signal.emit()
+	SignalRelay._province_name_changed(province_name)
 
 func _on_area_2d_mouse_exited():
 	var line = $Node2D/Polygon2D/Line2D
