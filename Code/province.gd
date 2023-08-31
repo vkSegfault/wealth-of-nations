@@ -4,6 +4,8 @@ var province_name: String = "NOT PROVIDED"
 var shape = PackedVector2Array()
 const BORDER_DEFAULT_COLOR = Color(1, 0, 0, 1)
 
+signal mouse_entered_province_signal
+
 func _ready():
 	var pol2d = $Node2D/Polygon2D
 	pol2d.polygon = shape
@@ -16,10 +18,18 @@ func _process(delta):
 
 func _on_area_2d_mouse_entered():
 	print("Entered {p}".format({"p": province_name }))
-	$Node2D/Polygon2D/Line2D.default_color = Color(0, 0, 1, 1)
+	var line = $Node2D/Polygon2D/Line2D
+	line.default_color = Color(0, 0, 1, 1)
+	line.z_index = 2  # to draw focused border over other borders
+	
+	# both equivalent
+	emit_signal("mouse_entered_province_signal")
+	mouse_entered_province_signal.emit()
 
 func _on_area_2d_mouse_exited():
-	$Node2D/Polygon2D/Line2D.default_color = BORDER_DEFAULT_COLOR
+	var line = $Node2D/Polygon2D/Line2D
+	line.default_color = BORDER_DEFAULT_COLOR
+	line.z_index = 1  # get back to normal border ordering
 
 func add_collision_polygon_2d(collision_shape: PackedVector2Array):
 	# create CollisionPolygon2D needed for on_mouse_entered() signal of Area2D from exact vertices of Polygon2D itself

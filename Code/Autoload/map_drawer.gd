@@ -5,8 +5,7 @@ var points = PackedVector2Array(
 	);
 var province_polygon = Polygon2D.new();
 
-var province_scene = preload("res://province.tscn")
-
+var province_scene = preload("res://Scenes/province.tscn")
 
 
 
@@ -28,9 +27,14 @@ func _ready():
 		province_instance.shape = i.polygon  # for newer version
 		#province_instance.get_child(0).get_child(0).polygon = i.polygon
 		add_child(province_instance)
+		
+		## testing signal connection
+		province_instance.mouse_entered_province_signal.connect( _print_test )
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
+func _print_test():
+	print("Signal received!")
