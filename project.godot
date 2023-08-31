@@ -20,3 +20,8 @@ config/icon="res://icon.svg"
 MapDrawer="*res://Code/Autoload/map_drawer.gd"
 MapLoader="*res://Code/Autoload/map_loader.gd"
 SignalRelay="*res://Code/Autoload/signal_relay.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=768

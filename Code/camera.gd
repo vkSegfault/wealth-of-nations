@@ -9,6 +9,9 @@ const DELTA_ZOOM: float = 0.05
 const VIEWPORT_AREA_DEAD_ZONE = 0.75
 const VIEWPORT_AREA_FAST_ZONE = 0.95
 
+var mouse_velocity: Vector2
+var LMC_pressed: bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,22 +40,38 @@ func _process(delta):
 	elif (abs(move_y) > half_y * VIEWPORT_AREA_DEAD_ZONE):
 		var move_y_dir = Vector2(0, (move_y / abs(move_y)) * CAM_MOVEMENT_SPEED)
 		self.translate(-move_y_dir)
+		
+	#click and move
+	if LMC_pressed:
+		self.translate(-mouse_velocity * 0.01)
 
 
 func _input(event):
-	#zoom in and out
+	# DEBUG
+	#print("Event type: {i}".format( {"i": event.as_text() } ))
+	
+	# zoom in and out
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			if self.zoom.x >= MAX_ZOOM or  self.zoom.y >= MAX_ZOOM:
 				return
 			self.zoom += Vector2(DELTA_ZOOM, DELTA_ZOOM)
-			#print("Camera2D zoom is: {z}".format( { "z": self.get_zoom() } ))
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			if self.zoom.x <= MIN_ZOOM or  self.zoom.y <= MIN_ZOOM:
 				return
 			self.zoom -= Vector2(DELTA_ZOOM, DELTA_ZOOM)
-			#print("Camera2D zoom is: {z}".format( { "z": self.get_zoom() } ))
-
-
+			
 	if event is InputEventMouseMotion:
-		pass
+		mouse_velocity = event.relative
+
+	# drag and move
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print("LMC Button is being pressed")
+			mouse_velocity = Vector2(0, 0)
+			LMC_pressed = true
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
+			print("LMC Buttom released")
+			LMC_pressed = false
+			mouse_velocity = Vector2(0, 0)
+	
