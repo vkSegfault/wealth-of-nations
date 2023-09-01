@@ -4,6 +4,7 @@ extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalRelay.province_name_changed_signal.connect(_print_test)  # args from signal are passes implictly to connected func
+	$Control/MarginContainer/VBoxContainer/HBoxContainer/Label.add_theme_font_size_override("font_size", 40)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

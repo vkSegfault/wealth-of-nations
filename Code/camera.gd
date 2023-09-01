@@ -43,7 +43,8 @@ func _process(delta):
 		
 	#click and move
 	if LMC_pressed:
-		self.translate(-mouse_velocity * 0.01)
+		self.translate(-mouse_velocity * 0.5)
+		mouse_velocity = Vector2.ZERO
 
 
 func _input(event):
