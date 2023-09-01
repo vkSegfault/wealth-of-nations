@@ -1,10 +1,5 @@
 extends Node2D
 
-var points = PackedVector2Array(
-		[Vector2(0, 0), Vector2(600, 600), Vector2(400, 200)]
-	);
-var province_polygon = Polygon2D.new();
-
 var province_scene = preload("res://Scenes/province.tscn")
 
 

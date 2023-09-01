@@ -32,6 +32,16 @@ size_flags_vertical = 0
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Province_Name_Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Dupa Mamuta"
+text = "Dupa Mamutadd"
+
+[node name="Province_Name_Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Dupa Mamutadd"
+
+[node name="Country_Name_RichLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Country "
