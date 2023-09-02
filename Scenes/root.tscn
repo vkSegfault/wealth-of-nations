@@ -14,19 +14,19 @@ script = ExtResource("1_sc36a")
 
 [node name="Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0, 0.529412, 0.0431373, 0.466667)
-polygon = PackedVector2Array(424, 104, 384, 104, 344, 112, 368, 152, 368, 184, 408, 176, 472, 176, 488, 160, 456, 128, 440, 128, 408, 128)
+polygon = PackedVector2Array(424, 104, 384, 104, 344, 112, 368, 152, 368, 184, 408, 176, 472, 176, 488, 160, 456, 128, 440, 128, 416, 120)
 
 [node name="Tricity" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(1, 1, 0.482353, 0.423529)
-polygon = PackedVector2Array(408, 128, 440, 128, 424, 104)
+polygon = PackedVector2Array(416, 120, 440, 128, 424, 104)
 
 [node name="WestPomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0.258824, 1, 0.156863, 0.513726)
-polygon = PackedVector2Array(232, 160, 240, 200, 224, 216, 256, 232, 320, 200, 344, 200, 368, 184, 368, 152, 344, 112, 312, 136, 272, 144)
+polygon = PackedVector2Array(232, 160, 240, 200, 224, 216, 248, 232, 296, 216, 320, 200, 320, 208, 328, 208, 352, 200, 352, 184, 368, 184, 368, 152, 344, 112, 312, 136, 272, 144)
 
 [node name="Branderburgia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0.72549, 1, 1, 0.486275)
-polygon = PackedVector2Array(224, 216, 256, 232, 256, 296, 224, 296, 208, 304, 184, 288, 184, 272, 144, 256, 136, 232, 144, 216, 96, 192, 136, 184, 224, 184, 240, 200, 208, 232, 192, 224, 176, 240, 216, 240, 208, 232)
+polygon = PackedVector2Array(224, 216, 248, 232, 248, 248, 256, 296, 224, 296, 208, 304, 184, 288, 184, 272, 144, 256, 136, 232, 144, 216, 96, 192, 136, 184, 224, 184, 240, 200, 208, 232, 192, 224, 176, 240, 216, 240, 208, 232)
 
 [node name="Berlin" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(1, 0.643137, 1, 1)
@@ -38,7 +38,15 @@ polygon = PackedVector2Array(240, 200, 232, 160, 208, 144, 184, 136, 208, 136, 1
 
 [node name="Lubusz" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0.47451, 0.470588, 0, 0.494118)
-polygon = PackedVector2Array(256, 232, 256, 296, 272, 312, 312, 296, 352, 296, 320, 272, 320, 200)
+polygon = PackedVector2Array(248, 232, 248, 248, 256, 296, 272, 312, 312, 296, 352, 296, 320, 272, 320, 200, 296, 216)
+
+[node name="GreatPoland" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 0.603922, 1, 0.482353)
+polygon = PackedVector2Array(320, 208, 320, 272, 352, 296, 360, 296, 376, 288, 400, 320, 416, 312, 416, 304, 440, 280, 448, 288, 456, 264, 456, 256, 432, 240, 416, 240, 392, 224, 392, 208, 368, 184, 352, 184, 352, 200, 328, 208, 352, 232, 368, 232, 368, 248, 352, 248, 352, 232, 328, 208)
+
+[node name="Poznan" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.372549, 1, 1, 0.443137)
+polygon = PackedVector2Array(368, 248, 352, 248, 352, 232, 368, 232)
 
 [node name="TextureRect" type="TextureRect" parent="WorldDrawDebug"]
 z_index = -1
