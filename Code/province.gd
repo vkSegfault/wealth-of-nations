@@ -1,14 +1,24 @@
 extends Node
 
+#class_name Province
+
 var province_name: String = "NOT PROVIDED"
 var shape = PackedVector2Array()
+var color: Color = Color(0, 0, 0)
 const BORDER_DEFAULT_COLOR = Color(1, 0, 0, 1)
+var country: String
+var pop: int
 
 signal mouse_entered_province_signal
+
+#func _init(country: String, pop: int):
+#	country = country
+#	pop = pop
 
 func _ready():
 	var pol2d = $Node2D/Polygon2D
 	pol2d.polygon = shape
+	pol2d.color = color
 	add_collision_polygon_2d(pol2d.polygon)
 	add_border(pol2d.polygon)  # note comment inside func
 
@@ -48,5 +58,5 @@ func add_border(line_shape: PackedVector2Array):
 	line.z_index = 1  # to draw on top of province
 	line.antialiased = true
 	$Node2D/Polygon2D.add_child(line)
-	print("Line2D points count: {c}".format({ "c": line.get_point_count() }))
+	#print("Line2D points count: {c}".format({ "c": line.get_point_count() }))
 

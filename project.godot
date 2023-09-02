@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MapDrawer="*res://Code/Autoload/map_drawer.gd"
 MapLoader="*res://Code/Autoload/map_loader.gd"
 SignalRelay="*res://Code/Autoload/signal_relay.gd"
 GlobalInput="*res://Code/Autoload/input.gd"
