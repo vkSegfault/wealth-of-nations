@@ -8,12 +8,12 @@ var countries_JSON = {
 var countries_INTERNAL = []
 
 var province_scene = preload("res://Scenes/province.tscn")
-var provinces_JSON = {
+var provinces_DICT = {
 	"Pomerania": { "country": "Poland", "pop": 3_000_000 },
 	"Mecklenburg–WestPomerania":{ "country": "Germany", "pop": 2_000_000 }
 }
 
-var provinces_INTERNAL = []
+var provinces_INTERNAL = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,7 +27,7 @@ func _ready():
 	print("We serialized {c} countries".format({"c": countries_INTERNAL.size() }))
 	
 	# serialize provinces
-	for province in provinces_JSON:
+	for province in provinces_DICT:
 		#print(province)
 		#provinces_INTERNAL.append( Province.new( provinces_JSON[province]["country"], provinces_JSON[province]["pop"] ) )
 		pass
@@ -39,7 +39,8 @@ func _ready():
 		# if it's not Polygon2D then it's some debug temp shit probablu and we don't care
 		if not (i is Polygon2D):
 			continue
-			
+		
+		provinces_INTERNAL[i.name] = i.polygon
 		#print("Province: {p} with coords: {c}".format({"p": i.name, "c": i.polygon}))
 		
 		var province_instance = province_scene.instantiate()
@@ -49,13 +50,13 @@ func _ready():
 		# THERE SHOULD NEVER BE else PATH EXECUTED! if so fix the data (probablu Province name mismatch)
 		# i.name - name of Province from internal Godot map
 		# provinces_JSON.keys() - name of Province from dict DB
-		if i.name in provinces_JSON.keys():
+		if i.name in provinces_DICT.keys():
 			print("Province: {p} is in province dictionary".format({"p": i.name}))
-			var country = provinces_JSON[i.name]["country"]
+			var country = provinces_DICT[i.name]["country"]
 			province_instance.country = country
 			var country_color = countries_JSON[country]["color"]
 			province_instance.color = country_color
-			var pop = provinces_JSON[i.name]["pop"]
+			var pop = provinces_DICT[i.name]["pop"]
 			province_instance.pop = pop
 		else:
 			print("###FIX IT ### Province: {p} is NOT in province dictionary".format({"p": i.name}))

@@ -57,6 +57,6 @@ func add_border(line_shape: PackedVector2Array):
 	line.default_color = Color(1, 0, 0, 1)
 	line.z_index = 1  # to draw on top of province
 	line.antialiased = true
-	$Node2D/Polygon2D.add_child(line)
+	#$Node2D/Polygon2D.add_child(line)  # it's already in tree so don't need to add child
 	#print("Line2D points count: {c}".format({ "c": line.get_point_count() }))
 
