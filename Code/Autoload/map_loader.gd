@@ -13,7 +13,7 @@ var provinces_DICT = {
 	"Mecklenburg–WestPomerania":{ "country": "Germany", "pop": 2_000_000 }
 }
 
-var provinces_INTERNAL = {}
+var provinces_INTERNAL = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,7 +31,7 @@ func _ready():
 		#print(province)
 		#provinces_INTERNAL.append( Province.new( provinces_JSON[province]["country"], provinces_JSON[province]["pop"] ) )
 		pass
-	print("We serialized {p} provinces".format({"p": provinces_INTERNAL.size() }))
+	#print("We serialized {p} provinces".format({"p": provinces_INTERNAL.size() }))
 	
 	# iterate over all drew in editor provinces and make actual logical Province out of vertices
 	for i in get_node("/root/Root/WorldDrawDebug/Node2D").get_children():
@@ -40,7 +40,9 @@ func _ready():
 		if not (i is Polygon2D):
 			continue
 		
-		provinces_INTERNAL[i.name] = i.polygon
+		var name = i.name
+		var shape = i.polygon
+		provinces_INTERNAL.append( { "name" = name, "shape" = shape } )
 		#print("Province: {p} with coords: {c}".format({"p": i.name, "c": i.polygon}))
 		
 		var province_instance = province_scene.instantiate()
@@ -59,10 +61,11 @@ func _ready():
 			var pop = provinces_DICT[i.name]["pop"]
 			province_instance.pop = pop
 		else:
-			print("###FIX IT ### Province: {p} is NOT in province dictionary".format({"p": i.name}))
+			print("### FIX IT ### Province: {p} is NOT in province dictionary".format({"p": i.name}))
 
 		add_child(province_instance)
-	
+		
+	print("We serialized {p} provinces".format({"p": provinces_INTERNAL.size() }))
 	
 	# iterare provinces and add to country it belongs to
 	# for prov in provinces_INTERNAL:

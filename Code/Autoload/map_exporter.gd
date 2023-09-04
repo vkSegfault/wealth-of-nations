@@ -7,8 +7,5 @@ func _ready():
 	prov_file.store_line(prov_json)
 	prov_file.close()
 	
-	for p in MapLoader.provinces_INTERNAL:
-		print(p)
-		print(MapLoader.provinces_INTERNAL[p])
-		
-	
+	for i in MapLoader.provinces_INTERNAL.size():
+		print(MapLoader.provinces_INTERNAL[i])
