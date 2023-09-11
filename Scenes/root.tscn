@@ -52,6 +52,18 @@ polygon = PackedVector2Array(368, 248, 352, 248, 352, 232, 368, 232)
 color = Color(0.462745, 0, 0.32549, 0.454902)
 polygon = PackedVector2Array(464, 128, 472, 152, 488, 160, 472, 176, 504, 208, 520, 208, 576, 184, 616, 160, 608, 144, 624, 128, 560, 136, 480, 120)
 
+[node name="Kuyavia-Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.682353, 1, 1, 0.560784)
+polygon = PackedVector2Array(368, 184, 392, 208, 392, 224, 416, 240, 432, 240, 456, 256, 472, 248, 488, 216, 504, 208, 472, 176, 408, 176)
+
+[node name="Warsaw" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.607843, 1, 0.0784314, 0.45098)
+polygon = PackedVector2Array(568, 264, 568, 248, 560, 240, 552, 240, 552, 264)
+
+[node name="Masovia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 0.627451, 0.521569, 0.592157)
+polygon = PackedVector2Array(504, 208, 488, 216, 472, 248, 528, 264, 552, 264, 552, 240, 560, 240, 568, 248, 568, 264, 552, 264, 528, 264, 520, 272, 544, 296, 528, 296, 544, 328, 592, 336, 584, 304, 568, 304, 584, 288, 584, 272, 624, 264, 648, 248, 616, 240, 608, 224, 592, 216, 576, 184, 520, 208)
+
 [node name="TextureRect" type="TextureRect" parent="WorldDrawDebug"]
 z_index = -1
 offset_left = -7840.0
