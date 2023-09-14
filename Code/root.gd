@@ -3,12 +3,9 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var args = Array(OS.get_cmdline_args())
-	print("CMD LINE ARGS:")
 	if args.has("-exportProvinces"):
 		print("Exporting provinces...")
 		_export_provinces()
-	for i in args:
-		print(i)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
