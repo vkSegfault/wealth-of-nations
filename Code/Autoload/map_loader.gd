@@ -4,7 +4,6 @@ var countries_JSON = {
 	"Poland": { "capital": "Warsaw", "color": Color(1, 0, 0) },
 	"Germany":{ "capital": "Berlin", "color": Color(0, 1, 0) }
 }
-
 var countries_INTERNAL = []
 
 var province_scene = preload("res://Scenes/province.tscn")
@@ -12,7 +11,6 @@ var provinces_DICT = {
 	"Pomerania": { "country": "Poland", "pop": 3_000_000 },
 	"Mecklenburg–WestPomerania":{ "country": "Germany", "pop": 2_000_000 }
 }
-
 var provinces_INTERNAL = []
 
 # Called when the node enters the scene tree for the first time.
@@ -27,6 +25,16 @@ func _ready():
 	print("We serialized {c} countries".format({"c": countries_INTERNAL.size() }))
 	
 	# serialize provinces
+	var data = _deserialize_provinces("provincesExported.json")
+	print("Serialized exported from eidtor provinces are: ")
+	for i in data:
+		print(i.shape is String)
+		var province_instance = province_scene.instantiate()
+		province_instance.province_name = i.name
+		province_instance.shape = i.shape
+		add_child(province_instance)
+	
+		
 	for province in provinces_DICT:
 		#print(province)
 		#provinces_INTERNAL.append( Province.new( provinces_JSON[province]["country"], provinces_JSON[province]["pop"] ) )
@@ -35,7 +43,7 @@ func _ready():
 	
 	# iterate over all drew in editor provinces and make actual logical Province out of vertices
 	for i in get_node("/root/Root/WorldDrawDebug/Node2D").get_children():
-		
+		return
 		# if it's not Polygon2D then it's some debug temp shit probablu and we don't care
 		if not (i is Polygon2D):
 			continue
@@ -76,3 +84,23 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func _deserialize_provinces(file_name: String):
+	var prov_file = FileAccess.open(file_name, FileAccess.READ)
+	var data = JSON.parse_string(prov_file.get_as_text())
+	for i in data:
+		var vector_as_string = i.shape
+		vector_as_string = vector_as_string.substr(1, len(vector_as_string) - 2)
+		var array_of_string_vec2s = vector_as_string.split("),")
+		print(array_of_string_vec2s)
+		for vec2_str in array_of_string_vec2s:
+			print(vec2_str)
+			vec2_str = vec2_str.replace("(", "")
+			vec2_str = vec2_str.replace(" (", "")
+			vec2_str = vec2_str.replace(",", "")
+			vec2_str = vec2_str.strip
+			vec2_str = vec2_str.split(" ")
+			print(vec2_str)
+		i.shape = str_to_var(i.shape)
+	prov_file.close()
+	return data
