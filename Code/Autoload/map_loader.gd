@@ -25,10 +25,19 @@ func _ready():
 	# deserialize provinces
 	var data = _deserialize_provinces("provincesExported.json")
 	for i in data:
-#		print(i.shape is String)
 		var province_instance = province_scene.instantiate()
 		province_instance.province_name = i.name
 		province_instance.shape = i.shape
+		if i.color != null:
+			if i.color.size() == 4:
+				# case where we provided RGBA
+				var color = Color( float(i.color[0])/255, float(i.color[1])/255, float(i.color[2])/255, float(i.color[3])/255 )
+				province_instance.color = color
+			if i.color.size() == 3:
+				# case where we provided RGB only
+				province_instance.color = Color( float(i.color[0])/255, i.color[1]/255, i.color[2]/255)
+		else:
+			print( "### FIX IT ### {name} has no Color".format({ "name": i.name }) )
 		add_child(province_instance)
 	
 	
