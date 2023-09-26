@@ -5,7 +5,8 @@ extends Node
 var province_name: String = "NOT PROVIDED"
 var shape = PackedVector2Array()
 var color: Color = Color(0, 0, 0, 0)
-const BORDER_DEFAULT_COLOR = Color(0, 0, 0, 1)
+const BORDER_DEFAULT_COLOR = Color(0.4, 0.4, 0.4, 1)
+const BORDER_FOCUSED_COLOR = Color(0, 0, 0, 1)
 var country: String
 var pop: int
 
@@ -29,7 +30,7 @@ func _process(delta):
 func _on_area_2d_mouse_entered():
 	print("Entered {p}".format({"p": province_name }))
 	var line = $Node2D/Polygon2D/Line2D
-	line.default_color = Color(0, 0, 1, 1)
+	line.default_color = BORDER_FOCUSED_COLOR
 	line.z_index = 2  # to draw focused border over other borders
 	
 	# both equivalent
@@ -49,12 +50,12 @@ func add_collision_polygon_2d(collision_shape: PackedVector2Array):
 	$Node2D/Polygon2D/Area2D.add_child(collision_polygon_2d)
 
 func add_border(line_shape: PackedVector2Array):
-	# there is open request to enable closing Line2D, for not it stays open
+	# there is open request to enable closing Line2D, for now it stays open
 	# https://github.com/godotengine/godot/pull/79182
 	var line = $Node2D/Polygon2D/Line2D
 	line.points = line_shape
 	line.width = 4
-	line.default_color = Color(1, 0, 0, 1)
+	line.default_color = BORDER_DEFAULT_COLOR
 	line.z_index = 1  # to draw on top of province
 	line.antialiased = true
 	#$Node2D/Polygon2D.add_child(line)  # it's already in tree so don't need to add child
