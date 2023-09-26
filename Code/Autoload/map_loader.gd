@@ -1,9 +1,5 @@
 extends Node
 
-var countries_JSON = {
-	"Poland": { "capital": "Warsaw", "color": Color(1, 0, 0) },
-	"Germany":{ "capital": "Berlin", "color": Color(0, 1, 0) }
-}
 var countries_INTERNAL = []
 
 var province_scene = preload("res://Scenes/province.tscn")
@@ -31,11 +27,11 @@ func _ready():
 		if i.color != null:
 			if i.color.size() == 4:
 				# case where we provided RGBA
-				var color = Color( float(i.color[0])/255, float(i.color[1])/255, float(i.color[2])/255, float(i.color[3])/255 )
+				var color = Color( float(i.color[0])/255, float(i.color[1])/255, float(i.color[2])/255, 255 )
 				province_instance.color = color
 			if i.color.size() == 3:
 				# case where we provided RGB only
-				province_instance.color = Color( float(i.color[0])/255, i.color[1]/255, i.color[2]/255)
+				province_instance.color = Color( float(i.color[0])/255, i.color[1]/255, i.color[2]/255 )
 		else:
 			print( "### FIX IT ### {name} has no Color".format({ "name": i.name }) )
 		add_child(province_instance)

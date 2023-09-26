@@ -5,7 +5,7 @@ extends Node
 var province_name: String = "NOT PROVIDED"
 var shape = PackedVector2Array()
 var color: Color = Color(0, 0, 0, 0)
-const BORDER_DEFAULT_COLOR = Color(1, 0, 0, 1)
+const BORDER_DEFAULT_COLOR = Color(0, 0, 0, 1)
 var country: String
 var pop: int
 
