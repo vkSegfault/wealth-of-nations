@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://b1vv2j028r28x"
+path="res://.godot/imported/Wadingr Trial.otf-d7de79605ca275076bfa1540f9cb25df.fontdata"
+
+[deps]
+
+source_file="res://External_Resources/Fonts/wadingr/Wadingr Trial.otf"
+dest_files=["res://.godot/imported/Wadingr Trial.otf-d7de79605ca275076bfa1540f9cb25df.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

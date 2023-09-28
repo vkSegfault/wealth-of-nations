@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://h6waydrwmwtp"]
+
+[ext_resource type="FontFile" uid="uid://c313xxht7rwj0" path="res://External_Resources/Fonts/wadingr/Wadingr Trial.ttf" id="1_p0uuj"]
+[ext_resource type="Texture2D" uid="uid://d04kubb7q54h1" path="res://External_Resources/Textures/crate.png" id="2_sle80"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qvbhr"]
+texture = ExtResource("2_sle80")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[resource]
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_p0uuj")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_qvbhr")

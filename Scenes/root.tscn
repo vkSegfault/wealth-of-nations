@@ -65,6 +65,14 @@ polygon = PackedVector2Array(568, 264, 568, 248, 560, 240, 552, 240, 552, 264)
 color = Color(1, 0.627451, 0.521569, 0.592157)
 polygon = PackedVector2Array(504, 208, 488, 216, 472, 248, 528, 264, 552, 264, 552, 240, 560, 240, 568, 248, 568, 264, 552, 264, 528, 264, 520, 272, 544, 296, 528, 296, 544, 328, 592, 336, 584, 304, 568, 304, 584, 288, 584, 272, 624, 264, 648, 248, 616, 240, 608, 224, 592, 216, 576, 184, 520, 208)
 
+[node name="LesserPoland" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.560784, 0.627451, 0.490196, 0.760784)
+polygon = PackedVector2Array(544, 328, 536, 312, 496, 344, 488, 368, 512, 368, 528, 384, 512, 400, 488, 384, 512, 368, 488, 368, 464, 384, 512, 440, 544, 424, 568, 424, 568, 392, 560, 368, 600, 336, 592, 336)
+
+[node name="Cracow" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 0.360784, 0.34902, 0.662745)
+polygon = PackedVector2Array(488, 384, 512, 400, 528, 384, 512, 368)
+
 [node name="TextureRect" type="TextureRect" parent="WorldDrawDebug"]
 z_index = -1
 offset_left = -7840.0

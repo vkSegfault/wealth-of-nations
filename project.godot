@@ -24,7 +24,7 @@ SignalRelay="*res://Code/Autoload/signal_relay.gd"
 [display]
 
 window/size/viewport_width=1920
-window/size/viewport_height=1024
+window/size/viewport_height=1080
 
 [editor]
 

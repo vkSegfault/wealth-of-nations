@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6j2hgvlp88kh"]
+[gd_scene load_steps=3 format=3 uid="uid://b6j2hgvlp88kh"]
 
 [ext_resource type="Script" path="res://Code/ui.gd" id="1_4lj5l"]
+[ext_resource type="Theme" uid="uid://h6waydrwmwtp" path="res://Themes/UiPanel.tres" id="2_iqj7f"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_4lj5l")
@@ -13,35 +14,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1088.0
+offset_bottom = 122.0
+theme = ExtResource("2_iqj7f")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
 layout_mode = 2
-size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Province_Name_Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CountryNameLabel" type="Label" parent="Control/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Dupa Mamutadd"
+text = "Country"
 
-[node name="Province_Name_Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ProvinceNameLabel" type="Label" parent="Control/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Dupa Mamutadd"
+text = "Province"
 
-[node name="Country_Name_RichLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 40)
+[node name="PanelContainer2" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_top = 128.0
+offset_right = 176.0
+offset_bottom = 250.0
+theme = ExtResource("2_iqj7f")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer2"]
 layout_mode = 2
-size_flags_vertical = 4
-text = "Country "
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="CountryNameLabel" type="Label" parent="Control/PanelContainer2/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Country"
