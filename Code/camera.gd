@@ -6,8 +6,8 @@ const DELTA_ZOOM: float = 0.05
 
 @export var CAM_MOVEMENT_SPEED = 3
 @export var CAM_MOVEMENT_SPEED_FAST = 10
-const VIEWPORT_AREA_DEAD_ZONE = 0.75
-const VIEWPORT_AREA_FAST_ZONE = 0.95
+const VIEWPORT_AREA_DEAD_ZONE = 0.95
+const VIEWPORT_AREA_FAST_ZONE = 0.99
 
 var mouse_velocity: Vector2
 var LMC_pressed: bool = false

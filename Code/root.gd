@@ -4,7 +4,7 @@ extends Node
 func _ready():
 	var args = Array(OS.get_cmdline_args())
 	if args.has("-exportProvinces"):
-		print(">>> Cmd Line Arg deteced: \"-exportProvinces\" \n>>> Exporting provinces...")
+		print(">>> Cmd Line Arg deteced: \"-exportProvinces\"")
 		_prepare_provinces_to_export()
 		_export_provinces()
 
@@ -21,14 +21,16 @@ func _prepare_provinces_to_export():
 		if not (i is Polygon2D):
 			continue
 		
-		var name = i.name
+		var provName = i.name
 		var shape = i.polygon
-		MapLoader.provinces_INTERNAL.append( { "name" = name, "shape" = shape } )
+		MapLoader.provinces_INTERNAL.append( { "name" = provName, "shape" = shape } )
 		
-	print(">>> We collected {p} provinces".format({"p": MapLoader.provinces_INTERNAL.size() }))
+	print(">>> Prepared {p} provinces to be exported".format({"p": MapLoader.provinces_INTERNAL.size() }))
 	
 func _export_provinces():
+	print(">>> Exporting provinces...")
 	var prov_json = JSON.stringify(MapLoader.provinces_INTERNAL)
 	var prov_file = FileAccess.open("provinces.json", FileAccess.WRITE)
 	prov_file.store_line(prov_json)
 	prov_file.close()
+	print(">>> Exporting finished succesfully")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnv01iru6ahk0"]
+[gd_scene load_steps=6 format=3 uid="uid://dnv01iru6ahk0"]
 
 [ext_resource type="Script" path="res://Code/root.gd" id="1_sc36a"]
+[ext_resource type="Texture2D" uid="uid://d04kubb7q54h1" path="res://External_Resources/Textures/crate.png" id="2_l8dkd"]
 [ext_resource type="Texture2D" uid="uid://b6fm46ggdxs13" path="res://External_Resources/Blank_world_map_with_all_administrative_divisions.png" id="2_qjumr"]
 [ext_resource type="Script" path="res://Code/camera.gd" id="3_2r7m4"]
 [ext_resource type="PackedScene" uid="uid://b6j2hgvlp88kh" path="res://Scenes/game_ui.tscn" id="4_d0mku"]
@@ -11,7 +12,6 @@ script = ExtResource("1_sc36a")
 [node name="WorldDrawDebug" type="Node" parent="."]
 
 [node name="Node2D" type="Node2D" parent="WorldDrawDebug"]
-visible = false
 
 [node name="Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0, 0.529412, 0.0431373, 0.466667)
@@ -66,12 +66,27 @@ color = Color(1, 0.627451, 0.521569, 0.592157)
 polygon = PackedVector2Array(504, 208, 488, 216, 472, 248, 528, 264, 552, 264, 552, 240, 560, 240, 568, 248, 568, 264, 552, 264, 528, 264, 520, 272, 544, 296, 528, 296, 544, 328, 592, 336, 584, 304, 568, 304, 584, 288, 584, 272, 624, 264, 648, 248, 616, 240, 608, 224, 592, 216, 576, 184, 520, 208)
 
 [node name="LesserPoland" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+texture_repeat = 3
 color = Color(0.560784, 0.627451, 0.490196, 0.760784)
+texture = ExtResource("2_l8dkd")
+texture_scale = Vector2(2, 2)
 polygon = PackedVector2Array(544, 328, 536, 312, 496, 344, 488, 368, 512, 368, 528, 384, 512, 400, 488, 384, 512, 368, 488, 368, 464, 384, 512, 440, 544, 424, 568, 424, 568, 392, 560, 368, 600, 336, 592, 336)
 
 [node name="Cracow" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(1, 0.360784, 0.34902, 0.662745)
 polygon = PackedVector2Array(488, 384, 512, 400, 528, 384, 512, 368)
+
+[node name="Subcarpatia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.627451, 1, 1, 0.545098)
+polygon = PackedVector2Array(568, 424, 592, 424, 648, 448, 640, 432, 640, 408, 680, 368, 656, 360, 624, 360, 616, 352, 624, 344, 600, 336, 560, 368, 568, 392)
+
+[node name="EasternGalicia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.117647, 0.0980392, 0.0941176, 0.466667)
+polygon = PackedVector2Array(648, 448, 688, 464, 688, 440, 720, 432, 712, 416, 720, 408, 736, 408, 768, 384, 752, 368, 728, 368, 712, 352, 696, 352, 664, 384, 680, 392, 704, 392, 696, 408, 680, 408, 680, 392, 664, 384, 640, 408, 640, 432)
+
+[node name="Lviv" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 1, 0.396078, 0.290196)
+polygon = PackedVector2Array(680, 392, 680, 408, 696, 408, 704, 392)
 
 [node name="TextureRect" type="TextureRect" parent="WorldDrawDebug"]
 z_index = -1
