@@ -10,7 +10,7 @@ const BORDER_FOCUSED_COLOR = Color(0, 0, 0, 1)
 var country: String
 var pop: int
 
-signal mouse_entered_province_signal
+# signal mouse_entered_province_signal
 
 #func _init(country: String, pop: int):
 #	country = country
@@ -23,7 +23,6 @@ func _ready():
 	add_collision_polygon_2d(pol2d.polygon)
 	add_border(pol2d.polygon)  # note comment inside func
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -35,8 +34,8 @@ func _on_area_2d_mouse_entered():
 	
 	# both equivalent
 	# emit_signal("mouse_entered_province_signal")
-	mouse_entered_province_signal.emit()
-	SignalRelay._province_name_changed(province_name)
+	# mouse_entered_province_signal.emit()
+	SignalRelay._province_name_changed(province_name, country)
 
 func _on_area_2d_mouse_exited():
 	var line = $Node2D/Polygon2D/Line2D

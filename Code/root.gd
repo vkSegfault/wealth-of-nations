@@ -1,6 +1,7 @@
 extends Node
 
-# Called when the node enters the scene tree for the first time.
+var provinces_INTERNAL = []
+
 func _ready():
 	var args = Array(OS.get_cmdline_args())
 	if args.has("-exportProvinces"):
@@ -9,7 +10,6 @@ func _ready():
 		_export_provinces()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
@@ -23,13 +23,14 @@ func _prepare_provinces_to_export():
 		
 		var provName = i.name
 		var shape = i.polygon
-		MapLoader.provinces_INTERNAL.append( { "name" = provName, "shape" = shape } )
+		provinces_INTERNAL.append( { "name" = provName, "shape" = shape } )
 		
-	print(">>> Prepared {p} provinces to be exported".format({"p": MapLoader.provinces_INTERNAL.size() }))
+	print(">>> Prepared {p} provinces to be exported".format({"p": provinces_INTERNAL.size() }))
 	
+
 func _export_provinces():
 	print(">>> Exporting provinces...")
-	var prov_json = JSON.stringify(MapLoader.provinces_INTERNAL)
+	var prov_json = JSON.stringify(provinces_INTERNAL)
 	var prov_file = FileAccess.open("provinces.json", FileAccess.WRITE)
 	prov_file.store_line(prov_json)
 	prov_file.close()

@@ -12,6 +12,7 @@ script = ExtResource("1_sc36a")
 [node name="WorldDrawDebug" type="Node" parent="."]
 
 [node name="Node2D" type="Node2D" parent="WorldDrawDebug"]
+visible = false
 
 [node name="Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0, 0.529412, 0.0431373, 0.466667)

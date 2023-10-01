@@ -43,10 +43,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -70.5
-offset_right = 88.0
-offset_bottom = 70.5
+offset_left = -136.0
+offset_top = -70.0
+offset_right = 132.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_iqj7f")
@@ -61,12 +61,9 @@ layout_mode = 2
 
 [node name="CountryNameLabel" type="Label" parent="Control/PanelContainer2/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Country"
+text = "Choose country"
 
 [node name="ItemList" type="ItemList" parent="Control/PanelContainer2/MarginContainer/GridContainer"]
 layout_mode = 2
 allow_reselect = true
 auto_height = true
-item_count = 2
-item_0/text = "Germany"
-item_1/text = "Poland"
