@@ -10,6 +10,7 @@ func _ready():
 		_export_provinces()
 
 
+@warning_ignore("unused_parameter")
 func _process(delta):
 	pass
 	

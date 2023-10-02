@@ -23,6 +23,7 @@ func _ready():
 	add_collision_polygon_2d(pol2d.polygon)
 	add_border(pol2d.polygon)  # note comment inside func
 
+@warning_ignore("unused_parameter")
 func _process(delta):
 	pass
 

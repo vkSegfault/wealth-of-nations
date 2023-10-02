@@ -19,6 +19,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta):
 	#move camera to border
 	var half_x = get_viewport().size.x / 2
