@@ -20,8 +20,9 @@ func _ready():
 	var pol2d = $Node2D/Polygon2D
 	pol2d.polygon = shape
 	pol2d.color = color
-	add_collision_polygon_2d(pol2d.polygon)
-	add_border(pol2d.polygon)  # note comment inside func
+	_add_collision_polygon_2d(pol2d.polygon)
+	_add_border(pol2d.polygon)  # note comment inside func
+	_add_nav_polygon(pol2d.polygon)
 
 @warning_ignore("unused_parameter")
 func _process(delta):
@@ -43,13 +44,13 @@ func _on_area_2d_mouse_exited():
 	line.default_color = BORDER_DEFAULT_COLOR
 	line.z_index = 1  # get back to normal border ordering
 
-func add_collision_polygon_2d(collision_shape: PackedVector2Array):
+func _add_collision_polygon_2d(collision_shape: PackedVector2Array):
 	# create CollisionPolygon2D needed for on_mouse_entered() signal of Area2D from exact vertices of Polygon2D itself
 	var collision_polygon_2d = CollisionPolygon2D.new()
 	collision_polygon_2d.polygon = collision_shape
 	$Node2D/Polygon2D/Area2D.add_child(collision_polygon_2d)
 
-func add_border(line_shape: PackedVector2Array):
+func _add_border(line_shape: PackedVector2Array):
 	# there is open request to enable closing Line2D, for now it stays open
 	# https://github.com/godotengine/godot/pull/79182
 	var line = $Node2D/Polygon2D/Line2D
@@ -61,3 +62,8 @@ func add_border(line_shape: PackedVector2Array):
 	#$Node2D/Polygon2D.add_child(line)  # it's already in tree so don't need to add child
 	#print("Line2D points count: {c}".format({ "c": line.get_point_count() }))
 
+func _add_nav_polygon(outline: PackedVector2Array):
+	var nav_polygon = NavigationPolygon.new()
+	nav_polygon.add_outline(outline)
+	nav_polygon.make_polygons_from_outlines()
+	$NavigationRegion2D.navigation_polygon = nav_polygon

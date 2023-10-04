@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnv01iru6ahk0"]
+[gd_scene load_steps=7 format=3 uid="uid://dnv01iru6ahk0"]
 
 [ext_resource type="Script" path="res://Code/root.gd" id="1_sc36a"]
 [ext_resource type="Texture2D" uid="uid://d04kubb7q54h1" path="res://External_Resources/Textures/crate.png" id="2_l8dkd"]
 [ext_resource type="Texture2D" uid="uid://b6fm46ggdxs13" path="res://External_Resources/Blank_world_map_with_all_administrative_divisions.png" id="2_qjumr"]
 [ext_resource type="Script" path="res://Code/camera.gd" id="3_2r7m4"]
 [ext_resource type="PackedScene" uid="uid://b6j2hgvlp88kh" path="res://Scenes/game_ui.tscn" id="4_d0mku"]
+[ext_resource type="PackedScene" uid="uid://bhq0exdmt1qiv" path="res://Scenes/tank.tscn" id="6_w0ro8"]
 
 [node name="Root" type="Node"]
 script = ExtResource("1_sc36a")
@@ -106,3 +107,10 @@ script = ExtResource("3_2r7m4")
 [node name="UI" type="Node" parent="."]
 
 [node name="Game UI" parent="UI" instance=ExtResource("4_d0mku")]
+
+[node name="Tank" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("6_w0ro8")]
+position = Vector2(416, 200)
+movement_target = NodePath("../Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(688, 408)

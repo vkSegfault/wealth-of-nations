@@ -24,5 +24,7 @@ invert_border = 10.0
 position = Vector2(-8, 72)
 curve = SubResource("Curve2D_w5px6")
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+
 [connection signal="mouse_entered" from="Node2D/Polygon2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Node2D/Polygon2D/Area2D" to="." method="_on_area_2d_mouse_exited"]
