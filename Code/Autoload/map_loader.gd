@@ -4,28 +4,16 @@ var countries_INTERNAL = []
 
 var province_scene = preload("res://Scenes/province.tscn")
 
-func _ready():
-	# serialize countries
-#	for country in countries_JSON:
-#		#print(country)
-##		print(countries_JSON[country]) # print key
-##		print(countries_JSON[country]["capital"]) # print value
-##		print(countries_JSON[country]["color"]) # print value
-#		countries_INTERNAL.append( Country.new( country, countries_JSON[country]["capital"], countries_JSON[country]["color"] ) )
-#	print("We serialized {c} countries".format({"c": countries_INTERNAL.size() }))
-	
-	
+func _ready():	
 	# FOR IMPORTER
 	# deserialize provinces
 	var data = _deserialize_provinces("provincesExported.json")
 	for i in data:
+		### add provinces
 		var province_instance = province_scene.instantiate()
 		province_instance.province_name = i.name
 		province_instance.shape = i.shape
 		province_instance.country = i.country.name
-		
-		if not countries_INTERNAL.has(province_instance.country):
-			countries_INTERNAL.append(province_instance.country)
 		
 		if i.color != null:
 			if i.color.size() == 4:
@@ -38,6 +26,11 @@ func _ready():
 		else:
 			print( "### FIX IT ### {name} has no Color".format({ "name": i.name }) )
 		add_child(province_instance)
+		
+		### add countries
+		if not countries_INTERNAL.has(province_instance.country):
+			countries_INTERNAL.append(province_instance.country)
+			
 	print( countries_INTERNAL )
 
 

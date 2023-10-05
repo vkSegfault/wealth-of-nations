@@ -23,6 +23,20 @@ func _ready():
 	_add_collision_polygon_2d(pol2d.polygon)
 	_add_border(pol2d.polygon)  # note comment inside func
 	_add_nav_polygon(pol2d.polygon)
+	
+	## TEMP - depening on province terrain type travel cost should be higher
+	if province_name == "WestPomerania":
+		$NavigationRegion2D.travel_cost = 1
+		
+		### THERE ARE 2 WAYS TO BLOCK AGENTS FROM ENTERING NAV REGION:
+		### 1. Using different layers so that Agents of COuntry A will only move on Layer 1
+		### 2. Disabling Nav Region so we manually define that everything other than Country's Regions should be disabled
+		# (SOLUTION 1) move this NavigationRegion into layer 2 so that Agent's operating on layer 1 can't use it
+		# this way we can accomplish where particular Country units can go (inside our border) or can't (outside border)
+		$NavigationRegion2D.set_navigation_layer_value(2, true)
+		$NavigationRegion2D.set_navigation_layer_value(1, false)
+		# (SOLUTION 2)
+		$NavigationRegion2D.enabled = false
 
 @warning_ignore("unused_parameter")
 func _process(delta):

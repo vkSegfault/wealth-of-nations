@@ -13,13 +13,6 @@ offset_bottom = 1088.0
 texture = ExtResource("3_wxi6h")
 expand_mode = 1
 
-[node name="BackgroundTexture" type="TextureRect" parent="."]
-visible = false
-offset_right = 1127.0
-offset_bottom = 750.0
-texture = ExtResource("3_wxi6h")
-stretch_mode = 5
-
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
