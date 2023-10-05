@@ -7,8 +7,6 @@ func _ready():
 	$Control/PanelContainer/MarginContainer/GridContainer/ProvinceNameLabel.add_theme_font_size_override("font_size", 40)
 	$Control/PanelContainer/MarginContainer/GridContainer/CountryNameLabel.add_theme_font_size_override("font_size", 40)
 	
-	for i in MapLoader.countries_INTERNAL:
-		$Control/PanelContainer2/MarginContainer/GridContainer/ItemList.add_item(i)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")

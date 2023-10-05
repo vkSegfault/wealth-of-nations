@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://myfm4wl8f54a"]
+
+[ext_resource type="Script" path="res://Code/UI/menu_screen.gd" id="1_0nd2v"]
+[ext_resource type="Theme" uid="uid://h6waydrwmwtp" path="res://Themes/UiPanel.tres" id="1_jj1hg"]
+[ext_resource type="Texture2D" uid="uid://c3damh1vdfk1d" path="res://External_Resources/Textures/map1.jpeg" id="3_wxi6h"]
+
+[node name="menu" type="CanvasLayer"]
+script = ExtResource("1_0nd2v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1984.0
+offset_bottom = 1088.0
+texture = ExtResource("3_wxi6h")
+expand_mode = 1
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+visible = false
+offset_right = 1127.0
+offset_bottom = 750.0
+texture = ExtResource("3_wxi6h")
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -70.0
+offset_right = 132.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("1_jj1hg")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CountryNameLabel" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Choose country"
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+allow_reselect = true
+auto_height = true
+
+[connection signal="item_clicked" from="PanelContainer/MarginContainer/GridContainer/ItemList" to="." method="_on_item_list_item_clicked"]
