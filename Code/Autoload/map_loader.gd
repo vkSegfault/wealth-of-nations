@@ -28,6 +28,7 @@ func _ready():
 		add_child(province_instance)
 		
 		### add countries
+		_deserialize_countries()
 		if not countries_INTERNAL.has(province_instance.country):
 			countries_INTERNAL.append(province_instance.country)
 			
@@ -53,4 +54,8 @@ func _deserialize_provinces(file_name: String):
 			shape.append(vec2_int)
 		i.shape = shape
 	prov_file.close()
+	# return proper Dict
 	return data
+
+func _deserialize_countries():
+	pass
