@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 MapLoader="*res://Code/Autoload/map_loader.gd"
 GlobalInput="*res://Code/Autoload/input.gd"
 SignalRelay="*res://Code/Autoload/signal_relay.gd"
-CountryState="*res://Code/Autoload/country_state.gd"
+WorldState="*res://Code/Autoload/world_state.gd"
 
 [display]
 

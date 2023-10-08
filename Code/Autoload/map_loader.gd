@@ -1,7 +1,5 @@
 extends Node
 
-var countries_INTERNAL = []
-
 var province_scene = preload("res://Scenes/province.tscn")
 
 func _ready():
@@ -9,8 +7,7 @@ func _ready():
 	# deserialize countries
 	var countries = _deserialize_countries("countriesExported.json")
 	for c in countries:
-		#print(c)
-		countries_INTERNAL.append( Country.new( c.name, c.capital.name, Color( c.color[0], c.color[1], c.color[2] ) ) )
+		WorldState.COUNTRIES.append( Country.new( c.name, c.capital.name, Color( c.color[0], c.color[1], c.color[2] ) ) )
 
 	# deserialize provinces
 	var data = _deserialize_provinces("provincesExported.json")
@@ -32,8 +29,9 @@ func _ready():
 		else:
 			print( "### FIX IT ### {name} has no Color".format({ "name": i.name }) )
 		add_child(province_instance)
+		WorldState.PROVINCES.append( province_instance )
 		
-	# accumulate population from province to particular country
+	
 	_gather_pop_from_provinces( data )
 	_gather_production_from_provinces( data )
 
@@ -70,24 +68,24 @@ func _deserialize_countries(file_name: String):
 
 func _gather_pop_from_provinces( deserialized_provinces ):
 	for p in deserialized_provinces:
-		for c in countries_INTERNAL:
+		for c in WorldState.COUNTRIES:
 			if c._name == p.country.name:
 				c._pop += p.pop
-	for c in countries_INTERNAL:
+	for c in WorldState.COUNTRIES:
 		print( "{c} has {p} population in total".format({'c': c._name, 'p': c._pop}) )
 
 func _gather_production_from_provinces( deserialized_provinces ):
-	var counter = 0
 	for p in deserialized_provinces:
-		for c in countries_INTERNAL:
+		for c in WorldState.COUNTRIES:
 			if c._name == p.country.name:  # if province belongs to country
 				if c._production.has( p.resource ):
 					c._production[p.resource] += 1
-	for c in countries_INTERNAL:
+	for c in WorldState.COUNTRIES:
 		print( "{c} has {r}".format( { "c":c._name, "r": c._production} ) )
 
 func get_country_instance( country_name: String ):
-	for c in countries_INTERNAL:
+	for c in WorldState.COUNTRIES:
 		if country_name == c._name:
 			# DOES IT MAKE A COPY OR RETURNS REFERENCE???
+			# it seems it's reference to original one
 			return c

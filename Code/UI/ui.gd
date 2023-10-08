@@ -13,21 +13,23 @@ func _ready():
 	for c in $CountryStats/PanelContainer/MarginContainer/GridContainer.get_children():
 		c.add_theme_font_size_override("font_size", 40)
 	_print_country_info( 
-		CountryState.COUNTRY._name, 
-		CountryState.COUNTRY._pop, 
-		CountryState.COUNTRY._capital, 
-		CountryState.COUNTRY._production
+		WorldState.player_country._name, 
+		WorldState.player_country._pop, 
+		WorldState.player_country._capital, 
+		WorldState.player_country._production
 	)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 @warning_ignore("unused_parameter")
 func _process(delta):
 	pass
+
 
 func _print_province_info(province_name, country_name):
 	print("Province name changed Signal received! {name}".format( {"name": province_name} ) )
 	$ProvinceView/PanelContainer/MarginContainer/GridContainer/ProvinceNameLabel.text = province_name
 	$ProvinceView/PanelContainer/MarginContainer/GridContainer/CountryNameLabel.text = country_name
+
 
 func _print_country_info( country_name, pop, capital, production ):
 	var country_stats = $CountryStats/PanelContainer/MarginContainer/GridContainer

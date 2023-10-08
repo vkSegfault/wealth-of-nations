@@ -1,7 +1,10 @@
 extends Node
 
-# country the player chose
-var COUNTRY: Country
+var COUNTRIES = []
+var PROVINCES = []
+var player_country: Country   # country the player chose
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

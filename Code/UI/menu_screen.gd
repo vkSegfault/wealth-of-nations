@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 func _ready():
-	for i in MapLoader.countries_INTERNAL:
+	for i in WorldState.COUNTRIES:
 		$PanelContainer/MarginContainer/GridContainer/ItemList.add_item( i._name )
 
 
@@ -13,5 +13,5 @@ func _on_item_list_item_clicked(index, at_position, mouse_button_index):
 	print( "Choosen country: {c}".format({'c': country_name}) )
 	
 	# fed choosen country data to main UI to display
-	CountryState.COUNTRY = MapLoader.get_country_instance( country_name )
+	WorldState.player_country = MapLoader.get_country_instance( country_name )
 	get_tree().change_scene_to_file("res://Scenes/root.tscn")
