@@ -6,32 +6,71 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_q17f5")
 
-[node name="Control" type="Control" parent="."]
+[node name="CountryStats" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -416.0
+offset_right = -416.0
+grow_horizontal = 0
+pivot_offset = Vector2(376, 0)
+size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
+[node name="PanelContainer" type="PanelContainer" parent="CountryStats"]
+layout_mode = 1
+offset_right = 376.0
+offset_bottom = 380.0
+theme = ExtResource("2_iqj7f")
+
+[node name="MarginContainer" type="MarginContainer" parent="CountryStats/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="GridContainer" type="GridContainer" parent="CountryStats/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CountryNameLabel" type="Label" parent="CountryStats/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Country"
+
+[node name="PopLabel" type="Label" parent="CountryStats/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Province"
+
+[node name="CapitalLabel" type="Label" parent="CountryStats/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Province"
+
+[node name="ProductionLabel" type="Label" parent="CountryStats/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "DEBUG ### Production"
+horizontal_alignment = 1
+
+[node name="ProvinceView" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="ProvinceView"]
 layout_mode = 1
 offset_right = 376.0
 offset_bottom = 122.0
 theme = ExtResource("2_iqj7f")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ProvinceView/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="ProvinceView/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="CountryNameLabel" type="Label" parent="Control/PanelContainer/MarginContainer/GridContainer"]
+[node name="CountryNameLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "Country"
 
-[node name="ProvinceNameLabel" type="Label" parent="Control/PanelContainer/MarginContainer/GridContainer"]
+[node name="ProvinceNameLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "Province"

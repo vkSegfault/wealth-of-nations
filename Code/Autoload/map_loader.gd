@@ -4,8 +4,14 @@ var countries_INTERNAL = []
 
 var province_scene = preload("res://Scenes/province.tscn")
 
-func _ready():	
-	# FOR IMPORTER
+func _ready():
+	
+	# deserialize countries
+	var countries = _deserialize_countries("countriesExported.json")
+	for c in countries:
+		#print(c)
+		countries_INTERNAL.append( Country.new( c.name, c.capital.name, Color( c.color[0], c.color[1], c.color[2] ) ) )
+
 	# deserialize provinces
 	var data = _deserialize_provinces("provincesExported.json")
 	for i in data:
@@ -27,12 +33,9 @@ func _ready():
 			print( "### FIX IT ### {name} has no Color".format({ "name": i.name }) )
 		add_child(province_instance)
 		
-		### add countries
-		_deserialize_countries()
-		if not countries_INTERNAL.has(province_instance.country):
-			countries_INTERNAL.append(province_instance.country)
-			
-	print( countries_INTERNAL )
+	# accumulate population from province to particular country
+	_gather_pop_from_provinces( data )
+	_gather_production_from_provinces( data )
 
 
 func _deserialize_provinces(file_name: String):
@@ -57,5 +60,34 @@ func _deserialize_provinces(file_name: String):
 	# return proper Dict
 	return data
 
-func _deserialize_countries():
-	pass
+func _deserialize_countries(file_name: String):
+	var country_file = FileAccess.open(file_name, FileAccess.READ)
+	var data = JSON.parse_string(country_file.get_as_text())
+	for i in data:
+		pass
+	country_file.close()
+	return data
+
+func _gather_pop_from_provinces( deserialized_provinces ):
+	for p in deserialized_provinces:
+		for c in countries_INTERNAL:
+			if c._name == p.country.name:
+				c._pop += p.pop
+	for c in countries_INTERNAL:
+		print( "{c} has {p} population in total".format({'c': c._name, 'p': c._pop}) )
+
+func _gather_production_from_provinces( deserialized_provinces ):
+	var counter = 0
+	for p in deserialized_provinces:
+		for c in countries_INTERNAL:
+			if c._name == p.country.name:  # if province belongs to country
+				if c._production.has( p.resource ):
+					c._production[p.resource] += 1
+	for c in countries_INTERNAL:
+		print( "{c} has {r}".format( { "c":c._name, "r": c._production} ) )
+
+func get_country_instance( country_name: String ):
+	for c in countries_INTERNAL:
+		if country_name == c._name:
+			# DOES IT MAKE A COPY OR RETURNS REFERENCE???
+			return c

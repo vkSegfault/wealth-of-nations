@@ -5,11 +5,11 @@ class_name Country
 var _name: String
 var _capital: String
 var _color: Color
+var _production: Dictionary = { 'fish': 0, 'cars': 0 }
 var _pop: int
-var _production: Dictionary
 
 # ctor
-func _init(country_name, capital, color):
+func _init( country_name, capital = "NOT PROVIDED", color = Color() ):
 	_name = country_name
 	_capital = capital
 	_color = color
