@@ -81,3 +81,6 @@ func _add_nav_polygon(outline: PackedVector2Array):
 	nav_polygon.add_outline(outline)
 	nav_polygon.make_polygons_from_outlines()
 	$NavigationRegion2D.navigation_polygon = nav_polygon
+
+func redraw( color: Color ):
+	$Node2D/Polygon2D.color = color
