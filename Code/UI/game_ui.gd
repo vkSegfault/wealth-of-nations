@@ -45,7 +45,3 @@ func _on_next_turn_button_pressed():
 
 func _on_market_view_button_pressed():
 	$MarketView.visible = true
-
-
-func _on_close_button_pressed():
-	$MarketView.visible = false

@@ -17,6 +17,11 @@ func _ready():
 		province_instance.setName( i.name )
 		province_instance.shape = i.shape
 		province_instance.country = i.country.name
+#		if i.country is String:
+#			province_instance.country = i.country.name
+#		else:
+#			province_instance.country = "## FIX IT ## COUNTRY NOT PROVIDED"
+		print( i.country )
 		
 		if i.color != null:
 			if i.color.size() == 4:
@@ -30,10 +35,9 @@ func _ready():
 			print( "### FIX IT ### {name} has no Color".format({ "name": i.name }) )
 		add_child(province_instance)
 		WorldState.PROVINCES.append( province_instance )
-		
 	
-	_gather_pop_from_provinces( data )
-	_gather_production_from_provinces( data )
+	_gather_pop_from_provinces_to_countries( data )
+	_gather_production_from_provinces_to_countries( data )
 
 
 func _deserialize_provinces(file_name: String):
@@ -54,8 +58,13 @@ func _deserialize_provinces(file_name: String):
 			var vec2_int = Vector2( int(vec2_str[0]), int(vec2_str[1]) )
 			shape.append(vec2_int)
 		i.shape = shape
+		
+		# if Country is not assigned to Province (it's <null> instead { 'name': 'Poland' }
+		if not i.country is Dictionary:
+			print( "### FIX IT ### Province without Country: " + i.name )
+			i.country = { 'name': "### MISSING COUNTRY ###" }
+			
 	prov_file.close()
-	# return proper Dict
 	return data
 
 func _deserialize_countries(file_name: String):
@@ -66,7 +75,7 @@ func _deserialize_countries(file_name: String):
 	country_file.close()
 	return data
 
-func _gather_pop_from_provinces( deserialized_provinces ):
+func _gather_pop_from_provinces_to_countries( deserialized_provinces ):
 	for p in deserialized_provinces:
 		for c in WorldState.COUNTRIES:
 			if c._name == p.country.name:
@@ -74,7 +83,7 @@ func _gather_pop_from_provinces( deserialized_provinces ):
 	for c in WorldState.COUNTRIES:
 		print( "{c} has {p} population in total".format({'c': c._name, 'p': c._pop}) )
 
-func _gather_production_from_provinces( deserialized_provinces ):
+func _gather_production_from_provinces_to_countries( deserialized_provinces ):
 	for p in deserialized_provinces:
 		for c in WorldState.COUNTRIES:
 			if c._name == p.country.name:  # if province belongs to country
