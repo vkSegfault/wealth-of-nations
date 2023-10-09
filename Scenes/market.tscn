@@ -42,51 +42,36 @@ layout_mode = 2
 layout_mode = 2
 text = " X "
 
-[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="VFlowContainer2" type="VFlowContainer" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResourceNameLabel" type="Label" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
+layout_mode = 2
+text = "Resource"
+
+[node name="Panel2" type="Panel" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="Label5" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
+[node name="DemandLabel" type="Label" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
 layout_mode = 2
-text = "Dupa"
+text = "Demand"
 
-[node name="Label9" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
+[node name="Panel3" type="Panel" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "Dupa"
 
-[node name="Label4" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
+[node name="SupplyLabel" type="Label" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
 layout_mode = 2
-text = "Dupa"
+text = "Supply"
 
-[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
+[node name="Panel4" type="Panel" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "Dupa"
 
-[node name="Label6" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
+[node name="PriceLabel" type="Label" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
 layout_mode = 2
-text = "Dupa"
-
-[node name="Label7" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
-layout_mode = 2
-text = "Dupa"
-
-[node name="Label11" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
-layout_mode = 2
-text = "Dupa"
-
-[node name="Label10" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
-layout_mode = 2
-text = "Dupa"
-
-[node name="Label12" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
-layout_mode = 2
-text = "Dupa"
-
-[node name="Label8" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
-layout_mode = 2
-text = "Dupa"
-
-[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/GridContainer/HFlowContainer"]
-layout_mode = 2
-text = "Dupa"
+text = "Price"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/VFlowContainer/CloseButton" to="." method="_on_close_button_pressed"]

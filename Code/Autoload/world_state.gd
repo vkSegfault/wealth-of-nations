@@ -2,6 +2,7 @@ extends Node
 
 var COUNTRIES = []
 var PROVINCES = []
+var RESOURCES = {}
 var player_country: Country   # country the player chose
 
 

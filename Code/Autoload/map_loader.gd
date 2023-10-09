@@ -1,27 +1,32 @@
 extends Node
 
 var province_scene = preload("res://Scenes/province.tscn")
+const exports_path = "Imports/"
 
 func _ready():
+
+	# deserialize resources
+	var resources = _deserialize_resources( exports_path + "resourcesExported.json" )
+	for r in resources:
+		WorldState.RESOURCES[ r ] = { "demand": 0, "supply": 0 }
 	
 	# deserialize countries
-	var countries = _deserialize_countries("countriesExported.json")
+	var countries = _deserialize_countries( exports_path + "countriesExported.json" )
 	for c in countries:
 		WorldState.COUNTRIES.append( Country.new( c.name, c.capital.name, Color( c.color[0], c.color[1], c.color[2] ) ) )
 
 	# deserialize provinces
-	var data = _deserialize_provinces("provincesExported.json")
+	var data = _deserialize_provinces( exports_path + "provincesExported.json" )
 	for i in data:
 		### add provinces
 		var province_instance = province_scene.instantiate()
 		province_instance.setName( i.name )
 		province_instance.shape = i.shape
 		province_instance.country = i.country.name
-#		if i.country is String:
-#			province_instance.country = i.country.name
-#		else:
-#			province_instance.country = "## FIX IT ## COUNTRY NOT PROVIDED"
-		print( i.country )
+		
+		# gather reosurces into global market supply
+		if WorldState.RESOURCES.has( i.resource.name ):
+			WorldState.RESOURCES[ i.resource.name ].supply += 1
 		
 		if i.color != null:
 			if i.color.size() == 4:
@@ -34,14 +39,20 @@ func _ready():
 		else:
 			print( "### FIX IT ### {name} has no Color".format({ "name": i.name }) )
 		add_child(province_instance)
+		
 		WorldState.PROVINCES.append( province_instance )
 	
 	_gather_pop_from_provinces_to_countries( data )
 	_gather_production_from_provinces_to_countries( data )
 
+func _deserialize_resources( file_path: String ):
+	var resource_file = FileAccess.open( file_path, FileAccess.READ )
+	var data = JSON.parse_string( resource_file.get_as_text() )
+	resource_file.close()
+	return data
 
-func _deserialize_provinces(file_name: String):
-	var prov_file = FileAccess.open(file_name, FileAccess.READ)
+func _deserialize_provinces(file_path: String):
+	var prov_file = FileAccess.open(file_path, FileAccess.READ)
 	var data = JSON.parse_string(prov_file.get_as_text())
 	for i in data:
 		var vector_as_string = i.shape
@@ -64,11 +75,16 @@ func _deserialize_provinces(file_name: String):
 			print( "### FIX IT ### Province without Country: " + i.name )
 			i.country = { 'name': "### MISSING COUNTRY ###" }
 			
+		# if Resource is not assigned to Province
+		if not i.resource is Dictionary:
+			print( "### FIX IT ### Province without Resource: " + i.name )
+			i.resource = { "name": "### MISSING RESOURCE ###" }
+			
 	prov_file.close()
 	return data
 
-func _deserialize_countries(file_name: String):
-	var country_file = FileAccess.open(file_name, FileAccess.READ)
+func _deserialize_countries( file_path: String ):
+	var country_file = FileAccess.open( file_path, FileAccess.READ )
 	var data = JSON.parse_string(country_file.get_as_text())
 	for i in data:
 		pass

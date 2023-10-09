@@ -86,7 +86,7 @@ text = "Next Week"
 offset_left = 1008.0
 offset_right = 1123.0
 offset_bottom = 31.0
-text = "Wrold Market"
+text = "World Market"
 
 [node name="MarketView" parent="." instance=ExtResource("3_o8tun")]
 visible = false
