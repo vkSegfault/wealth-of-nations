@@ -2,9 +2,9 @@ extends Node
 
 #class_name Province
 
-var province_name: String = "NOT PROVIDED"
+var _province_name: String = "NOT PROVIDED" : set = setName, get = getName
 var shape = PackedVector2Array()
-var color: Color = Color(0, 0, 0, 0)
+var _color: Color = Color(0, 0, 0, 0) : set = setColor, get = getColor
 const BORDER_DEFAULT_COLOR = Color(0.4, 0.4, 0.4, 1)
 const BORDER_FOCUSED_COLOR = Color(0, 0, 0, 1)
 var country: String
@@ -19,13 +19,13 @@ var pop: int
 func _ready():
 	var pol2d = $Node2D/Polygon2D
 	pol2d.polygon = shape
-	pol2d.color = color
+	pol2d.color = _color
 	_add_collision_polygon_2d(pol2d.polygon)
 	_add_border(pol2d.polygon)  # note comment inside func
 	_add_nav_polygon(pol2d.polygon)
 	
 	## TEMP - depening on province terrain type travel cost should be higher
-	if province_name == "WestPomerania":
+	if _province_name == "WestPomerania":
 		$NavigationRegion2D.travel_cost = 1
 		
 		### THERE ARE 2 WAYS TO BLOCK AGENTS FROM ENTERING NAV REGION:
@@ -41,9 +41,22 @@ func _ready():
 @warning_ignore("unused_parameter")
 func _process(delta):
 	pass
+	
+func setName( province_name: String ):
+	_province_name = province_name
+
+func getName():
+	return _province_name
+
+func setColor( color: Color ):
+	_color = color
+	$Node2D/Polygon2D.color = _color
+
+func getColor():
+	return _color
 
 func _on_area_2d_mouse_entered():
-	print("Entered {p}".format({"p": province_name }))
+	print("Entered {p}".format({"p": _province_name }))
 	var line = $Node2D/Polygon2D/Line2D
 	line.default_color = BORDER_FOCUSED_COLOR
 	line.z_index = 2  # to draw focused border over other borders
@@ -51,7 +64,7 @@ func _on_area_2d_mouse_entered():
 	# both equivalent
 	# emit_signal("mouse_entered_province_signal")
 	# mouse_entered_province_signal.emit()
-	SignalRelay._province_name_changed(province_name, country)
+	SignalRelay._province_name_changed(_province_name, country)
 
 func _on_area_2d_mouse_exited():
 	var line = $Node2D/Polygon2D/Line2D
@@ -81,6 +94,3 @@ func _add_nav_polygon(outline: PackedVector2Array):
 	nav_polygon.add_outline(outline)
 	nav_polygon.make_polygons_from_outlines()
 	$NavigationRegion2D.navigation_polygon = nav_polygon
-
-func redraw( color: Color ):
-	$Node2D/Polygon2D.color = color

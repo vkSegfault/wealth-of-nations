@@ -37,3 +37,15 @@ func _print_country_info( country_name, pop, capital, production ):
 	country_stats.get_node("PopLabel").text = "Population: " + str(pop)
 	country_stats.get_node("CapitalLabel").text = "Capital: " + capital
 	country_stats.get_node("ProductionLabel").text = "Produced goods: " + "\n" + str(production)
+
+
+func _on_next_turn_button_pressed():
+	WorldState.next_turn()
+
+
+func _on_market_view_button_pressed():
+	$MarketView.visible = true
+
+
+func _on_close_button_pressed():
+	$MarketView.visible = false

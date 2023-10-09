@@ -14,7 +14,7 @@ func _ready():
 	for i in data:
 		### add provinces
 		var province_instance = province_scene.instantiate()
-		province_instance.province_name = i.name
+		province_instance.setName( i.name )
 		province_instance.shape = i.shape
 		province_instance.country = i.country.name
 		
@@ -25,7 +25,7 @@ func _ready():
 				province_instance.color = color
 			if i.color.size() == 3:
 				# case where we provided RGB only
-				province_instance.color = Color( float(i.color[0])/255, i.color[1]/255, i.color[2]/255 )
+				province_instance.setColor( Color( float(i.color[0])/255, i.color[1]/255, i.color[2]/255 ) )
 		else:
 			print( "### FIX IT ### {name} has no Color".format({ "name": i.name }) )
 		add_child(province_instance)
