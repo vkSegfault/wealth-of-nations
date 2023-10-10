@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	print( WorldState.RESOURCES )
+	print_debug( WorldState.RESOURCES )
 	for r in WorldState.RESOURCES:
 		var resource_row = VFlowContainer.new()
 		resource_row.alignment = FlowContainer.ALIGNMENT_CENTER

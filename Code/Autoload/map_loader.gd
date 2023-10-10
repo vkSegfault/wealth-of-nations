@@ -22,7 +22,7 @@ func _ready():
 		var province_instance = province_scene.instantiate()
 		province_instance.setName( i.name )
 		province_instance.shape = i.shape
-		province_instance.country = i.country.name
+		province_instance.country = i.country.name if i.country is Dictionary else "SEA"
 		
 		# gather reosurces into global market supply
 		if WorldState.RESOURCES.has( i.resource.name ):
@@ -72,8 +72,11 @@ func _deserialize_provinces(file_path: String):
 		
 		# if Country is not assigned to Province (it's <null> instead { 'name': 'Poland' }
 		if not i.country is Dictionary:
-			print( "### FIX IT ### Province without Country: " + i.name )
-			i.country = { 'name': "### MISSING COUNTRY ###" }
+			if i.terrain.name == "sea":
+				pass
+			else:
+				print( "### FIX IT ### Province without Country: " + i.name )
+				i.country = { 'name': "### MISSING COUNTRY ###" }
 			
 		# if Resource is not assigned to Province
 		if not i.resource is Dictionary:
@@ -93,6 +96,8 @@ func _deserialize_countries( file_path: String ):
 
 func _gather_pop_from_provinces_to_countries( deserialized_provinces ):
 	for p in deserialized_provinces:
+		if not p.country is Dictionary:  # if it's Sea Province then Country is null
+			continue
 		for c in WorldState.COUNTRIES:
 			if c._name == p.country.name:
 				c._pop += p.pop
@@ -101,6 +106,8 @@ func _gather_pop_from_provinces_to_countries( deserialized_provinces ):
 
 func _gather_production_from_provinces_to_countries( deserialized_provinces ):
 	for p in deserialized_provinces:
+		if not p.country is Dictionary:  # if it's Sea Province then Country is null
+			continue
 		for c in WorldState.COUNTRIES:
 			if c._name == p.country.name:  # if province belongs to country
 				if c._production.has( p.resource ):

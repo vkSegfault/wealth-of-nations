@@ -106,8 +106,11 @@ polygon = PackedVector2Array(472, 296, 488, 296, 496, 288, 488, 280, 472, 280)
 color = Color(0.32549, 0.490196, 0.501961, 0.815686)
 polygon = PackedVector2Array(456, 256, 456, 264, 448, 288, 440, 280, 416, 304, 416, 312, 448, 328, 456, 320, 464, 328, 480, 328, 496, 344, 536, 312, 528, 296, 544, 296, 520, 272, 496, 288, 488, 296, 472, 296, 472, 280, 488, 280, 496, 288, 520, 272, 528, 264, 472, 248)
 
+[node name="Western Baltic" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.00392157, 0.560784, 0.862745, 0.768627)
+polygon = PackedVector2Array(184, 136, 208, 144, 232, 160, 272, 144, 312, 136, 344, 112, 320, 64, 272, 64, 264, 88, 248, 88, 192, 112, 208, 136)
+
 [node name="TextureRect" type="TextureRect" parent="WorldDrawDebug"]
-visible = false
 z_index = -1
 offset_left = -7840.0
 offset_top = -1456.0
