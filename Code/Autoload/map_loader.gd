@@ -13,7 +13,7 @@ func _ready():
 	# deserialize countries
 	var countries = _deserialize_countries( exports_path + "countriesExported.json" )
 	for c in countries:
-		WorldState.COUNTRIES.append( Country.new( c.name, c.capital.name, Color( c.color[0], c.color[1], c.color[2] ) ) )
+		WorldState.COUNTRIES.append( Country.new( c.name, c.capital, Color( c.color[0], c.color[1], c.color[2] ) ) )
 
 	# deserialize provinces
 	var data = _deserialize_provinces( exports_path + "provincesExported.json" )
