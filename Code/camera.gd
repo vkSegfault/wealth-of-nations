@@ -46,7 +46,6 @@ func _process(delta):
 		var move_y_dir = Vector2(0, (move_y / abs(move_y)) * CAM_MOVEMENT_SPEED_FAST)
 		self.translate(-move_y_dir)
 	elif (abs(move_y) > half_y * VIEWPORT_AREA_DEAD_ZONE):
-		print(move_y)
 		var move_y_dir = Vector2(0, (move_y / abs(move_y)) * CAM_MOVEMENT_SPEED)
 		self.translate(-move_y_dir)
 		
@@ -77,11 +76,11 @@ func _input(event):
 	# drag and move
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			print("LMC Button is being pressed")
+			#print("LMC Button is being pressed")
 			mouse_velocity = Vector2(0, 0)
 			LMC_pressed = true
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
-			print("LMC Buttom released")
+			#print("LMC Buttom released")
 			LMC_pressed = false
 			mouse_velocity = Vector2(0, 0)
 	

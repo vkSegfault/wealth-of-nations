@@ -51,6 +51,7 @@ text = "DEBUG ### Production"
 horizontal_alignment = 1
 
 [node name="ProvinceView" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 
@@ -76,6 +77,9 @@ text = "Country"
 layout_mode = 2
 text = "Province"
 
+[node name="PopLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+
 [node name="NextTurnButton" type="Button" parent="."]
 offset_left = 872.0
 offset_right = 880.0
@@ -90,6 +94,26 @@ text = "World Market"
 
 [node name="MarketView" parent="." instance=ExtResource("3_o8tun")]
 visible = false
+
+[node name="ProvinceShortInfo" type="VBoxContainer" parent="."]
+visible = false
+offset_left = 544.0
+offset_right = 584.0
+offset_bottom = 40.0
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="ProvinceName" type="Label" parent="ProvinceShortInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountryName" type="Label" parent="ProvinceShortInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="NextTurnButton" to="." method="_on_next_turn_button_pressed"]
 [connection signal="pressed" from="MarketViewButton" to="." method="_on_market_view_button_pressed"]

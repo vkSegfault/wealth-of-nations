@@ -1,6 +1,6 @@
 extends Node
 
-#class_name Province
+# Maybe Province should own it's own UI
 
 var _province_name: String = "NOT PROVIDED" : set = setName, get = getName
 var shape = PackedVector2Array()
@@ -9,6 +9,8 @@ const BORDER_DEFAULT_COLOR = Color(0.4, 0.4, 0.4, 1)
 const BORDER_FOCUSED_COLOR = Color(0, 0, 0, 1)
 var country: String
 var pop: int
+
+var focused: bool = false
 
 # signal mouse_entered_province_signal
 
@@ -42,6 +44,13 @@ func _ready():
 func _process(delta):
 	pass
 	
+func _input(event):
+	if event is InputEventMouseButton:
+		if focused == true:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+				print( "Province Clicked: " + _province_name )
+				SignalRelay._province_clicked( _province_name, country, pop )
+	
 func setName( province_name: String ):
 	_province_name = province_name
 
@@ -60,16 +69,19 @@ func _on_area_2d_mouse_entered():
 	var line = $Node2D/Polygon2D/Line2D
 	line.default_color = BORDER_FOCUSED_COLOR
 	line.z_index = 2  # to draw focused border over other borders
+	focused = true
 	
 	# both equivalent
 	# emit_signal("mouse_entered_province_signal")
 	# mouse_entered_province_signal.emit()
 	SignalRelay._province_name_changed(_province_name, country)
+		
 
 func _on_area_2d_mouse_exited():
 	var line = $Node2D/Polygon2D/Line2D
 	line.default_color = BORDER_DEFAULT_COLOR
 	line.z_index = 1  # get back to normal border ordering
+	focused = false
 
 func _add_collision_polygon_2d(collision_shape: PackedVector2Array):
 	# create CollisionPolygon2D needed for on_mouse_entered() signal of Area2D from exact vertices of Polygon2D itself

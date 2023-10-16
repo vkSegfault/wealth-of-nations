@@ -4,6 +4,14 @@ extends Control
 func _ready():
 	print_debug( WorldState.RESOURCES )
 	for r in WorldState.RESOURCES:
+		
+		
+		var demand =  WorldState.RESOURCES[r]["demand"]
+		var supply = WorldState.RESOURCES[r]["supply"]
+		if supply == 0:
+			# no one is producing such resource so don't display it
+			continue
+		
 		var resource_row = VFlowContainer.new()
 		resource_row.alignment = FlowContainer.ALIGNMENT_CENTER
 		
@@ -16,7 +24,6 @@ func _ready():
 		resource_row.add_child( space_panel )
 		
 		var demand_name_label = Label.new()
-		var demand =  WorldState.RESOURCES[r]["demand"]
 		demand_name_label.text = str( demand )
 		resource_row.add_child( demand_name_label )
 		
@@ -25,7 +32,6 @@ func _ready():
 		resource_row.add_child( space_panel2 )
 		
 		var supply_name_label = Label.new()
-		var supply = WorldState.RESOURCES[r]["supply"]
 		supply_name_label.text = str( supply )
 		resource_row.add_child( supply_name_label )
 		
@@ -41,7 +47,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 

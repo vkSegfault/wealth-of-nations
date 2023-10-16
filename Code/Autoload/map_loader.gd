@@ -72,11 +72,14 @@ func _deserialize_provinces(file_path: String):
 		
 		# if Country is not assigned to Province (it's <null> instead { 'name': 'Poland' }
 		if not i.country is Dictionary:
-			if i.terrain.name == "sea":
-				pass
+			if i.terrain is Dictionary:			
+				if i.terrain.name == "sea":
+					pass
+				else:
+					print( "### FIX IT ### Province without Country: " + i.name )
+					i.country = { 'name': "### MISSING COUNTRY ###" }
 			else:
-				print( "### FIX IT ### Province without Country: " + i.name )
-				i.country = { 'name': "### MISSING COUNTRY ###" }
+				print( "### FIX IT ### Province without Terrain: " + i.name )
 			
 		# if Resource is not assigned to Province
 		if not i.resource is Dictionary:
