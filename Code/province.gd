@@ -1,6 +1,6 @@
 extends Node
 
-# Maybe Province should own it's own UI
+# Maybe Province should own it's own UI (?)
 
 var _province_name: String = "NOT PROVIDED" : set = setName, get = getName
 var shape = PackedVector2Array()
@@ -9,14 +9,12 @@ const BORDER_DEFAULT_COLOR = Color(0.4, 0.4, 0.4, 1)
 const BORDER_FOCUSED_COLOR = Color(0, 0, 0, 1)
 var country: String
 var pop: int
+var resource: String
+var resource_amount: int
 
 var focused: bool = false
 
-# signal mouse_entered_province_signal
 
-#func _init(country: String, pop: int):
-#	country = country
-#	pop = pop
 
 func _ready():
 	var pol2d = $Node2D/Polygon2D
@@ -49,7 +47,7 @@ func _input(event):
 		if focused == true:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 				print( "Province Clicked: " + _province_name )
-				SignalRelay._province_clicked( _province_name, country, pop )
+				SignalRelay._province_clicked( _province_name, country, pop, resource, resource_amount )
 	
 func setName( province_name: String ):
 	_province_name = province_name

@@ -59,7 +59,6 @@ anchors_preset = 0
 layout_mode = 1
 offset_right = 376.0
 offset_bottom = 122.0
-theme = ExtResource("2_iqj7f")
 
 [node name="MarginContainer" type="MarginContainer" parent="ProvinceView/PanelContainer"]
 layout_mode = 2
@@ -69,15 +68,18 @@ theme_override_constants/margin_right = 10
 [node name="GridContainer" type="GridContainer" parent="ProvinceView/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="CountryNameLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
-layout_mode = 2
-text = "Country"
-
 [node name="ProvinceNameLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "Province"
 
+[node name="CountryNameLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Country"
+
 [node name="PopLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="ResourceLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 
 [node name="NextTurnButton" type="Button" parent="."]

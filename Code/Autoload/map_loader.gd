@@ -23,6 +23,8 @@ func _ready():
 		province_instance.setName( i.name )
 		province_instance.shape = i.shape
 		province_instance.country = i.country.name if i.country is Dictionary else "SEA"
+		province_instance.resource = i.resource.name if i.resource is Dictionary else "## NO RESOURCE - FIX IT ##"
+		province_instance.resource_amount = i.resourceAmount if i.resourceAmount else 0
 		
 		# gather reosurces into global market supply
 		if WorldState.RESOURCES.has( i.resource.name ):
