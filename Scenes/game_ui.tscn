@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6j2hgvlp88kh"]
+[gd_scene load_steps=3 format=3 uid="uid://b6j2hgvlp88kh"]
 
 [ext_resource type="Script" path="res://Code/UI/game_ui.gd" id="1_pi1yr"]
-[ext_resource type="Theme" uid="uid://h6waydrwmwtp" path="res://Themes/UiPanel.tres" id="2_iqj7f"]
 [ext_resource type="PackedScene" uid="uid://20cthkenhr81" path="res://Scenes/market.tscn" id="3_o8tun"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -23,7 +22,6 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 offset_right = 376.0
 offset_bottom = 380.0
-theme = ExtResource("2_iqj7f")
 
 [node name="MarginContainer" type="MarginContainer" parent="CountryStats/PanelContainer"]
 layout_mode = 2
@@ -80,6 +78,9 @@ text = "Country"
 layout_mode = 2
 
 [node name="ResourceLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="TerrainLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 
 [node name="NextTurnButton" type="Button" parent="."]

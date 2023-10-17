@@ -11,6 +11,7 @@ var country: String
 var pop: int
 var resource: String
 var resource_amount: int
+var terrain: String
 
 var focused: bool = false
 
@@ -47,7 +48,7 @@ func _input(event):
 		if focused == true:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 				print( "Province Clicked: " + _province_name )
-				SignalRelay._province_clicked( _province_name, country, pop, resource, resource_amount )
+				SignalRelay._province_clicked( _province_name, country, pop, resource, resource_amount, terrain )
 	
 func setName( province_name: String ):
 	_province_name = province_name

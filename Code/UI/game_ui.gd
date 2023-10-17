@@ -23,7 +23,7 @@ func _ready():
 	
 	# CountryStats
 	for c in $CountryStats/PanelContainer/MarginContainer/GridContainer.get_children():
-		c.add_theme_font_size_override("font_size", 40)
+		c.add_theme_font_size_override("font_size", 30)
 	_print_country_info( 
 		WorldState.player_country._name, 
 		WorldState.player_country._pop, 
@@ -47,12 +47,23 @@ func _print_province_info( province_name, country_name ):
 	$ProvinceShortInfo/CountryName.text = country_name
 	$ProvinceShortInfo.visible = true
 
-func _show_province_details( province_name, country_name, pop, resource: String, resource_amount: int ):
+func _show_province_details( province_name, country_name, pop, resource: String, resource_amount: int, terrain: String ):
 	$ProvinceView.visible = true
 	$ProvinceView/PanelContainer/MarginContainer/GridContainer/ProvinceNameLabel.text = province_name
 	$ProvinceView/PanelContainer/MarginContainer/GridContainer/CountryNameLabel.text = country_name
-	$ProvinceView/PanelContainer/MarginContainer/GridContainer/PopLabel.text = "Pop: " + str(pop)
-	$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.text = "Resource: " + str(resource_amount) + " " + resource
+	if terrain != "sea":
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/PopLabel.visible = true
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/PopLabel.text = "Pop: " + str(pop)
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.visible = true
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.text = "Resource: " + str(resource_amount) + " " + resource
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/TerrainLabel.visible = true
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/TerrainLabel.text = "Terrain: " + terrain
+	else:
+		# if it's sea then don't print other staff
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/PopLabel.visible = false
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.visible = false
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/TerrainLabel.visible = false
+
 
 func _print_country_info( country_name, pop, capital, production ):
 	var country_stats = $CountryStats/PanelContainer/MarginContainer/GridContainer
