@@ -72,7 +72,7 @@ texture_repeat = 3
 color = Color(0.560784, 0.627451, 0.490196, 0.760784)
 texture = ExtResource("2_l8dkd")
 texture_scale = Vector2(2, 2)
-polygon = PackedVector2Array(544, 328, 536, 312, 496, 344, 488, 368, 512, 368, 528, 384, 512, 400, 488, 384, 512, 368, 488, 368, 464, 384, 512, 440, 544, 424, 568, 424, 568, 392, 560, 368, 600, 336, 592, 336)
+polygon = PackedVector2Array(544, 328, 536, 312, 496, 344, 488, 368, 512, 368, 528, 384, 512, 400, 488, 384, 512, 368, 488, 368, 464, 384, 488, 416, 512, 440, 544, 424, 568, 424, 568, 392, 560, 368, 600, 336, 592, 336)
 
 [node name="Cracow" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(1, 0.360784, 0.34902, 0.662745)
@@ -109,6 +109,14 @@ polygon = PackedVector2Array(456, 256, 456, 264, 448, 288, 440, 280, 416, 304, 4
 [node name="Western Baltic" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0.00392157, 0.560784, 0.862745, 0.768627)
 polygon = PackedVector2Array(184, 136, 208, 144, 232, 160, 272, 144, 312, 136, 344, 112, 320, 64, 272, 64, 264, 88, 248, 88, 192, 112, 208, 136)
+
+[node name="Upper Silesia Conurbation" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.941176, 0.705882, 0.615686, 0.686275)
+polygon = PackedVector2Array(464, 384, 488, 368, 456, 368, 440, 384, 464, 408)
+
+[node name="Silesia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.427451, 0.419608, 0, 0.627451)
+polygon = PackedVector2Array(464, 384, 488, 416, 464, 424, 432, 392, 400, 392, 400, 376, 360, 360, 392, 320, 400, 320, 416, 312, 448, 328, 456, 320, 464, 328, 480, 328, 496, 344, 488, 368, 456, 368, 440, 384, 464, 408)
 
 [node name="TextureRect" type="TextureRect" parent="WorldDrawDebug"]
 visible = false
