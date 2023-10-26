@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnv01iru6ahk0"]
+[gd_scene load_steps=11 format=3 uid="uid://dnv01iru6ahk0"]
 
 [ext_resource type="Script" path="res://Code/root.gd" id="1_sc36a"]
+[ext_resource type="Texture2D" uid="uid://box4g3i4juodg" path="res://External_Resources/MapChart_Map.png" id="2_0cuoh"]
+[ext_resource type="Texture2D" uid="uid://m44ljwi1r0yk" path="res://External_Resources/Mercator_world_map_(physical,_political,_population).jpg" id="2_4n0j3"]
 [ext_resource type="Texture2D" uid="uid://d04kubb7q54h1" path="res://External_Resources/Textures/crate.png" id="2_l8dkd"]
 [ext_resource type="Texture2D" uid="uid://b6fm46ggdxs13" path="res://External_Resources/Blank_world_map_with_all_administrative_divisions.png" id="2_qjumr"]
 [ext_resource type="Script" path="res://Code/camera.gd" id="3_2r7m4"]
 [ext_resource type="PackedScene" uid="uid://b6j2hgvlp88kh" path="res://Scenes/game_ui.tscn" id="4_d0mku"]
+[ext_resource type="Texture2D" uid="uid://3ydj4mjvsi7q" path="res://External_Resources/POLSKA_mapa_woj_z_powiatami.png" id="4_nm3jm"]
+[ext_resource type="Texture2D" uid="uid://cwxkrgue305ij" path="res://External_Resources/Landkreise,_Kreise_und_kreisfreie_Städte_in_Deutschland_2021-07-01.svg" id="4_oyhm3"]
 [ext_resource type="PackedScene" uid="uid://bhq0exdmt1qiv" path="res://Scenes/tank.tscn" id="6_w0ro8"]
 
 [node name="Root" type="Node"]
@@ -12,121 +16,182 @@ script = ExtResource("1_sc36a")
 
 [node name="WorldDrawDebug" type="Node" parent="."]
 
-[node name="Node2D" type="Node2D" parent="WorldDrawDebug"]
+[node name="Map_orto_color" type="TextureRect" parent="WorldDrawDebug"]
 visible = false
+offset_left = -10384.0
+offset_top = -3936.0
+offset_right = -3440.0
+offset_bottom = 496.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_4n0j3")
 
-[node name="Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0, 0.529412, 0.0431373, 0.466667)
-polygon = PackedVector2Array(424, 104, 384, 104, 344, 112, 368, 152, 368, 184, 408, 176, 472, 176, 488, 160, 472, 152, 464, 128, 440, 128, 416, 120)
-
-[node name="Tricity" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(1, 1, 0.482353, 0.423529)
-polygon = PackedVector2Array(416, 120, 440, 128, 424, 104)
-
-[node name="West Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.258824, 1, 0.156863, 0.513726)
-polygon = PackedVector2Array(232, 160, 240, 200, 224, 216, 248, 232, 296, 216, 320, 200, 320, 208, 328, 208, 352, 200, 352, 184, 368, 184, 368, 152, 344, 112, 312, 136, 272, 144)
-
-[node name="Branderburgia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.72549, 1, 1, 0.486275)
-polygon = PackedVector2Array(224, 216, 248, 232, 248, 248, 256, 296, 224, 296, 208, 304, 184, 288, 184, 272, 144, 256, 136, 232, 144, 216, 96, 192, 136, 184, 224, 184, 240, 200, 208, 232, 192, 224, 176, 240, 216, 240, 208, 232)
-
-[node name="Berlin" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(1, 0.643137, 1, 1)
-polygon = PackedVector2Array(192, 224, 176, 240, 216, 240, 208, 232)
-
-[node name="Mecklenburg West Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(1, 0.886275, 1, 0.494118)
-polygon = PackedVector2Array(240, 200, 232, 160, 208, 144, 184, 136, 208, 136, 192, 112, 176, 128, 144, 128, 96, 152, 72, 152, 64, 184, 96, 192, 136, 184, 224, 184)
-
-[node name="Lubusz" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.47451, 0.470588, 0, 0.494118)
-polygon = PackedVector2Array(248, 232, 248, 248, 256, 296, 272, 312, 312, 296, 352, 296, 320, 272, 320, 200, 296, 216)
-
-[node name="Greater Poland" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(1, 0.603922, 1, 0.482353)
-polygon = PackedVector2Array(320, 208, 320, 272, 352, 296, 360, 296, 376, 288, 400, 320, 416, 312, 416, 304, 440, 280, 448, 288, 456, 264, 456, 256, 432, 240, 416, 240, 392, 224, 392, 208, 368, 184, 352, 184, 352, 200, 328, 208, 352, 232, 368, 232, 368, 248, 352, 248, 352, 232, 328, 208)
-
-[node name="Poznan" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.372549, 1, 1, 0.443137)
-polygon = PackedVector2Array(368, 248, 352, 248, 352, 232, 368, 232)
-
-[node name="Warmia-Mazuria" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.462745, 0, 0.32549, 0.454902)
-polygon = PackedVector2Array(464, 128, 472, 152, 488, 160, 472, 176, 504, 208, 520, 208, 576, 184, 616, 160, 608, 144, 624, 128, 560, 136, 480, 120)
-
-[node name="Kuyavia-Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.682353, 1, 1, 0.560784)
-polygon = PackedVector2Array(368, 184, 392, 208, 392, 224, 416, 240, 432, 240, 456, 256, 472, 248, 488, 216, 504, 208, 472, 176, 408, 176)
-
-[node name="Warsaw" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.607843, 1, 0.0784314, 0.45098)
-polygon = PackedVector2Array(568, 264, 568, 248, 560, 240, 552, 240, 552, 264)
-
-[node name="Masovia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(1, 0.627451, 0.521569, 0.592157)
-polygon = PackedVector2Array(504, 208, 488, 216, 472, 248, 528, 264, 552, 264, 552, 240, 560, 240, 568, 248, 568, 264, 552, 264, 528, 264, 520, 272, 544, 296, 528, 296, 544, 328, 592, 336, 584, 304, 568, 304, 584, 288, 584, 272, 624, 264, 648, 248, 616, 240, 608, 224, 592, 216, 576, 184, 520, 208)
-
-[node name="Lesser Poland" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-texture_repeat = 3
-color = Color(0.560784, 0.627451, 0.490196, 0.760784)
-texture = ExtResource("2_l8dkd")
-texture_scale = Vector2(2, 2)
-polygon = PackedVector2Array(544, 328, 536, 312, 496, 344, 488, 368, 512, 368, 528, 384, 512, 400, 488, 384, 512, 368, 488, 368, 464, 384, 488, 416, 512, 440, 544, 424, 568, 424, 568, 392, 560, 368, 600, 336, 592, 336)
-
-[node name="Cracow" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(1, 0.360784, 0.34902, 0.662745)
-polygon = PackedVector2Array(488, 384, 512, 400, 528, 384, 512, 368)
-
-[node name="Subcarpatia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.627451, 1, 1, 0.545098)
-polygon = PackedVector2Array(568, 424, 592, 424, 648, 448, 640, 432, 640, 408, 680, 368, 656, 360, 624, 360, 616, 352, 624, 344, 600, 336, 560, 368, 568, 392)
-
-[node name="Eastern Galicia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.117647, 0.0980392, 0.0941176, 0.466667)
-polygon = PackedVector2Array(648, 448, 688, 464, 688, 440, 720, 432, 712, 416, 720, 408, 736, 408, 768, 384, 752, 368, 728, 368, 712, 352, 696, 352, 664, 384, 680, 392, 704, 392, 696, 408, 680, 408, 680, 392, 664, 384, 640, 408, 640, 432)
-
-[node name="Lviv" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(1, 1, 0.396078, 0.290196)
-polygon = PackedVector2Array(680, 392, 680, 408, 696, 408, 704, 392)
-
-[node name="Lower Silesia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.831373, 0.454902, 0.345098, 0.827451)
-polygon = PackedVector2Array(376, 288, 360, 296, 312, 296, 272, 312, 272, 328, 288, 344, 320, 344, 336, 352, 328, 368, 352, 384, 360, 376, 360, 360, 392, 320, 368, 320, 360, 328, 352, 328, 344, 320, 352, 312, 360, 312, 368, 320, 400, 320)
-
-[node name="Wroclaw" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.301961, 0.223529, 0.313726, 0.717647)
-polygon = PackedVector2Array(368, 320, 360, 312, 352, 312, 344, 320, 352, 328, 360, 328)
-
-[node name="Lodz" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(1, 1, 0.384314, 0.792157)
-polygon = PackedVector2Array(472, 296, 488, 296, 496, 288, 488, 280, 472, 280)
-
-[node name="Lodz Province" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.32549, 0.490196, 0.501961, 0.815686)
-polygon = PackedVector2Array(456, 256, 456, 264, 448, 288, 440, 280, 416, 304, 416, 312, 448, 328, 456, 320, 464, 328, 480, 328, 496, 344, 536, 312, 528, 296, 544, 296, 520, 272, 496, 288, 488, 296, 472, 296, 472, 280, 488, 280, 496, 288, 520, 272, 528, 264, 472, 248)
-
-[node name="Western Baltic" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.00392157, 0.560784, 0.862745, 0.768627)
-polygon = PackedVector2Array(184, 136, 208, 144, 232, 160, 272, 144, 312, 136, 344, 112, 320, 64, 272, 64, 264, 88, 248, 88, 192, 112, 208, 136)
-
-[node name="Upper Silesia Conurbation" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.941176, 0.705882, 0.615686, 0.686275)
-polygon = PackedVector2Array(464, 384, 488, 368, 456, 368, 440, 384, 464, 408)
-
-[node name="Silesia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
-color = Color(0.427451, 0.419608, 0, 0.627451)
-polygon = PackedVector2Array(464, 384, 488, 416, 464, 424, 432, 392, 400, 392, 400, 376, 360, 360, 392, 320, 400, 320, 416, 312, 448, 328, 456, 320, 464, 328, 480, 328, 496, 344, 488, 368, 456, 368, 440, 384, 464, 408)
-
-[node name="TextureRect" type="TextureRect" parent="WorldDrawDebug"]
+[node name="Map_orto_blank" type="TextureRect" parent="WorldDrawDebug"]
 visible = false
-z_index = -1
+modulate = Color(1, 1, 1, 0.694118)
+offset_left = -7320.0
+offset_top = -1928.0
+offset_right = -320.0
+offset_bottom = 3173.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_0cuoh")
+
+[node name="Map_Subdivision" type="TextureRect" parent="WorldDrawDebug"]
+visible = false
 offset_left = -7840.0
 offset_top = -1456.0
 offset_right = -3385.0
 offset_bottom = 682.0
 scale = Vector2(4, 4)
 texture = ExtResource("2_qjumr")
+
+[node name="Germany_subdiv" type="TextureRect" parent="WorldDrawDebug"]
+visible = false
+modulate = Color(1, 1, 1, 0.67451)
+offset_left = -88.0
+offset_top = 96.0
+offset_right = 858.0
+offset_bottom = 1349.0
+scale = Vector2(0.39, 0.36)
+texture = ExtResource("4_oyhm3")
+
+[node name="Poland_subdiv" type="TextureRect" parent="WorldDrawDebug"]
+modulate = Color(1, 1, 1, 0.760784)
+offset_left = 224.0
+offset_top = 96.0
+offset_right = 1245.0
+offset_bottom = 1044.0
+scale = Vector2(0.58, 0.56)
+texture = ExtResource("4_nm3jm")
+
+[node name="Node2D" type="Node2D" parent="WorldDrawDebug"]
+
+[node name="Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(60, 0)
+color = Color(0, 0.529412, 0.0431373, 0.466667)
+polygon = PackedVector2Array(390, 96, 354, 102, 318, 120, 324, 126, 324, 168, 330, 180, 324, 204, 336, 216, 354, 216, 372, 210, 384, 198, 396, 198, 432, 204, 456, 210, 462, 192, 474, 192, 480, 180, 468, 180, 462, 168, 462, 144, 426, 138, 402, 132, 420, 114, 414, 108, 414, 102, 432, 114, 438, 120, 438, 114, 408, 96)
+
+[node name="Tricity" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(16, 32)
+color = Color(1, 1, 0.482353, 0.423529)
+polygon = PackedVector2Array(446, 100, 470, 106, 464, 82)
+
+[node name="West Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(24, 18)
+color = Color(0.258824, 1, 0.156863, 0.513726)
+polygon = PackedVector2Array(210, 156, 216, 168, 222, 216, 204, 246, 204, 258, 222, 276, 228, 270, 234, 276, 246, 252, 258, 258, 270, 252, 282, 240, 294, 246, 300, 234, 306, 234, 306, 240, 330, 240, 348, 216, 336, 204, 354, 198, 360, 186, 366, 162, 360, 150, 360, 108, 354, 102, 348, 102, 324, 126, 234, 150, 222, 156)
+
+[node name="Branderburgia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(-18, 30)
+color = Color(0.72549, 1, 1, 0.486275)
+polygon = PackedVector2Array(224, 216, 248, 232, 248, 248, 256, 296, 224, 296, 208, 304, 184, 288, 184, 272, 144, 256, 136, 232, 144, 216, 96, 192, 136, 184, 224, 184, 240, 200, 208, 232, 192, 224, 176, 240, 216, 240, 208, 232)
+
+[node name="Berlin" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(-18, 30)
+color = Color(1, 0.643137, 1, 1)
+polygon = PackedVector2Array(192, 224, 176, 240, 216, 240, 208, 232)
+
+[node name="Mecklenburg West Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(-18, 18)
+color = Color(1, 0.886275, 1, 0.494118)
+polygon = PackedVector2Array(240, 200, 232, 160, 208, 144, 184, 136, 208, 136, 192, 112, 176, 128, 144, 128, 96, 152, 72, 152, 64, 184, 96, 192, 136, 184, 224, 184)
+
+[node name="Lubusz" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(0, 72)
+color = Color(0.47451, 0.470588, 0, 0.494118)
+polygon = PackedVector2Array(246, 222, 252, 228, 246, 240, 246, 252, 252, 258, 258, 276, 246, 294, 252, 312, 252, 324, 264, 330, 264, 336, 276, 330, 288, 336, 288, 324, 306, 330, 324, 306, 330, 300, 342, 312, 348, 306, 354, 294, 336, 288, 324, 276, 324, 240, 318, 216, 330, 216, 330, 204, 330, 180, 324, 180, 318, 192, 306, 186, 294, 198, 282, 204, 270, 198, 258, 222, 252, 216)
+
+[node name="Greater Poland" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(12, 54)
+color = Color(1, 0.603922, 1, 0.482353)
+polygon = PackedVector2Array(318, 204, 318, 234, 306, 234, 312, 258, 312, 294, 324, 306, 342, 312, 342, 318, 366, 342, 390, 342, 390, 336, 408, 342, 408, 354, 420, 360, 420, 378, 432, 384, 444, 378, 438, 366, 450, 354, 462, 318, 474, 318, 486, 288, 498, 282, 498, 270, 480, 270, 456, 252, 450, 258, 408, 240, 408, 216, 396, 210, 402, 186, 396, 174, 402, 162, 384, 162, 372, 150, 366, 162, 348, 168, 360, 180, 342, 204, 352, 232, 368, 232, 368, 248, 352, 248, 352, 232, 342, 204)
+
+[node name="Poznan" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(12, 54)
+color = Color(0.372549, 1, 1, 0.443137)
+polygon = PackedVector2Array(368, 248, 352, 248, 352, 232, 368, 232)
+
+[node name="Warmia-Mazuria" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(66, 12)
+color = Color(0.462745, 0, 0.32549, 0.454902)
+polygon = PackedVector2Array(456, 132, 456, 156, 462, 168, 474, 168, 468, 180, 456, 180, 450, 198, 456, 216, 480, 222, 486, 240, 516, 240, 540, 222, 588, 210, 606, 204, 648, 180, 654, 162, 636, 138, 654, 120, 570, 132, 480, 120)
+
+[node name="Kuyavia-Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(48, 30)
+color = Color(0.682353, 1, 1, 0.560784)
+polygon = PackedVector2Array(368, 184, 392, 208, 392, 224, 416, 240, 432, 240, 456, 256, 472, 248, 488, 216, 504, 208, 472, 176, 408, 176)
+
+[node name="Warsaw" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(16, 32)
+color = Color(0.607843, 1, 0.0784314, 0.45098)
+polygon = PackedVector2Array(568, 264, 568, 248, 560, 240, 552, 240, 552, 264)
+
+[node name="Masovia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(16, 32)
+color = Color(1, 0.627451, 0.521569, 0.592157)
+polygon = PackedVector2Array(504, 208, 488, 216, 472, 248, 528, 264, 552, 264, 552, 240, 560, 240, 568, 248, 568, 264, 552, 264, 528, 264, 520, 272, 544, 296, 528, 296, 544, 328, 592, 336, 584, 304, 568, 304, 584, 288, 584, 272, 624, 264, 648, 248, 616, 240, 608, 224, 592, 216, 576, 184, 520, 208)
+
+[node name="Lesser Poland" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+texture_repeat = 3
+position = Vector2(78, 168)
+color = Color(0.560784, 0.627451, 0.490196, 0.760784)
+texture = ExtResource("2_l8dkd")
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(544, 328, 536, 312, 496, 344, 488, 368, 512, 368, 528, 384, 512, 400, 488, 384, 512, 368, 488, 368, 464, 384, 488, 416, 512, 440, 544, 424, 568, 424, 568, 392, 560, 368, 600, 336, 592, 336)
+
+[node name="Cracow" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(78, 168)
+color = Color(1, 0.360784, 0.34902, 0.662745)
+polygon = PackedVector2Array(488, 384, 512, 400, 528, 384, 512, 368)
+
+[node name="Subcarpatia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(16, 32)
+color = Color(0.627451, 1, 1, 0.545098)
+polygon = PackedVector2Array(568, 424, 592, 424, 648, 448, 640, 432, 640, 408, 680, 368, 656, 360, 624, 360, 616, 352, 624, 344, 600, 336, 560, 368, 568, 392)
+
+[node name="Eastern Galicia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(16, 32)
+color = Color(0.117647, 0.0980392, 0.0941176, 0.466667)
+polygon = PackedVector2Array(648, 448, 688, 464, 688, 440, 720, 432, 712, 416, 720, 408, 736, 408, 768, 384, 752, 368, 728, 368, 712, 352, 696, 352, 664, 384, 680, 392, 704, 392, 696, 408, 680, 408, 680, 392, 664, 384, 640, 408, 640, 432)
+
+[node name="Lviv" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(16, 32)
+color = Color(1, 1, 0.396078, 0.290196)
+polygon = PackedVector2Array(680, 392, 680, 408, 696, 408, 704, 392)
+
+[node name="Lower Silesia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(0, 138)
+color = Color(0.831373, 0.454902, 0.345098, 0.827451)
+polygon = PackedVector2Array(376, 288, 360, 296, 312, 296, 272, 312, 272, 328, 288, 344, 320, 344, 336, 352, 328, 368, 352, 384, 360, 376, 360, 360, 392, 320, 368, 320, 360, 328, 352, 328, 344, 320, 352, 312, 360, 312, 368, 320, 400, 320)
+
+[node name="Wroclaw" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(0, 138)
+color = Color(0.301961, 0.223529, 0.313726, 0.717647)
+polygon = PackedVector2Array(368, 320, 360, 312, 352, 312, 344, 320, 352, 328, 360, 328)
+
+[node name="Lodz" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(90, 42)
+color = Color(1, 1, 0.384314, 0.792157)
+polygon = PackedVector2Array(472, 296, 488, 296, 496, 288, 488, 280, 472, 280)
+
+[node name="Lodz Province" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(90, 42)
+color = Color(0.32549, 0.490196, 0.501961, 0.815686)
+polygon = PackedVector2Array(456, 256, 456, 264, 448, 288, 440, 280, 416, 304, 416, 312, 448, 328, 456, 320, 464, 328, 480, 328, 496, 344, 536, 312, 528, 296, 544, 296, 520, 272, 496, 288, 488, 296, 472, 296, 472, 280, 488, 280, 496, 288, 520, 272, 528, 264, 472, 248)
+
+[node name="Western Baltic" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(16, 32)
+color = Color(0.00392157, 0.560784, 0.862745, 0.768627)
+polygon = PackedVector2Array(218, 142, 230, 142, 242, 136, 332, 112, 356, 88, 320, 64, 272, 64, 264, 88, 248, 88, 208, 112)
+
+[node name="Upper Silesia Conurbation" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(48, 138)
+color = Color(0.941176, 0.705882, 0.615686, 0.686275)
+polygon = PackedVector2Array(464, 384, 488, 368, 456, 368, 440, 384, 464, 408)
+
+[node name="Silesia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+position = Vector2(48, 138)
+color = Color(0.427451, 0.419608, 0, 0.627451)
+polygon = PackedVector2Array(464, 384, 488, 416, 464, 424, 432, 392, 400, 392, 400, 376, 360, 360, 392, 320, 400, 320, 416, 312, 448, 328, 456, 320, 464, 328, 480, 328, 496, 344, 488, 368, 456, 368, 440, 384, 464, 408)
 
 [node name="WorldInstances" type="Node" parent="."]
 
@@ -138,8 +203,9 @@ script = ExtResource("3_2r7m4")
 [node name="Game UI" parent="UI" instance=ExtResource("4_d0mku")]
 
 [node name="Tank" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("6_w0ro8")]
+visible = false
 position = Vector2(416, 200)
 movement_target = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(152, 144)
+position = Vector2(168, 176)
