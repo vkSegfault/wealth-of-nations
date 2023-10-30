@@ -72,6 +72,7 @@ func _deserialize_provinces(file_path: String):
 			var vec2_int = Vector2( int(vec2_str[0]), int(vec2_str[1]) )
 			shape.append(vec2_int)
 		i.shape = shape
+		_check_duplicated_verts( i.shape, i.name )
 		
 		# if Country is not assigned to Province (it's <null> instead { 'name': 'Poland' }
 		if not i.country is Dictionary:
@@ -127,3 +128,11 @@ func get_country_instance( country_name: String ):
 			# DOES IT MAKE A COPY OR RETURNS REFERENCE???
 			# it seems it's reference to original one
 			return c
+
+func _check_duplicated_verts( verts: PackedVector2Array, prov_name: String ):
+	var deduplicated_verts: PackedVector2Array
+	for vert in verts:
+		if not vert in deduplicated_verts:
+			deduplicated_verts.append( vert )
+		else:
+			print( "### DUPS FOUND in: " + prov_name )

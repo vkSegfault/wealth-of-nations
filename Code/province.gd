@@ -21,17 +21,20 @@ func _ready():
 	var pol2d = $Node2D/Polygon2D
 	pol2d.polygon = shape
 	pol2d.color = _color
-	_add_collision_polygon_2d(pol2d.polygon)
-	_add_border(pol2d.polygon)  # note comment inside func
-	_add_nav_polygon(pol2d.polygon)
+	pol2d.set_antialiased( true )
+	_add_collision_polygon_2d( pol2d.polygon )
+	_add_border( pol2d.polygon )  # note comment inside func
+	_add_nav_polygon( pol2d.polygon )
 	
 	## TEMP - depening on province terrain type travel cost should be higher
-	if _province_name == "WestPomerania":
+	if terrain == "sea":
+		print( "Blocking navigation access to: " + _province_name )
 		$NavigationRegion2D.travel_cost = 1
 		
 		### THERE ARE 2 WAYS TO BLOCK AGENTS FROM ENTERING NAV REGION:
 		### 1. Using different layers so that Agents of COuntry A will only move on Layer 1
 		### 2. Disabling Nav Region so we manually define that everything other than Country's Regions should be disabled
+		### 3. There is node NavigationObstacle2D
 		# (SOLUTION 1) move this NavigationRegion into layer 2 so that Agent's operating on layer 1 can't use it
 		# this way we can accomplish where particular Country units can go (inside our border) or can't (outside border)
 		$NavigationRegion2D.set_navigation_layer_value(2, true)

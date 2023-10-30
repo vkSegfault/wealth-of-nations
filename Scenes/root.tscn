@@ -76,6 +76,7 @@ scale = Vector2(0.67, 0.69)
 texture = ExtResource("7_xsytj")
 
 [node name="Node2D" type="Node2D" parent="WorldDrawDebug"]
+visible = false
 
 [node name="Pomerania" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0, 0.529412, 0.0431373, 0.466667)
@@ -91,7 +92,7 @@ polygon = PackedVector2Array(234, 174, 234, 186, 240, 222, 240, 246, 228, 264, 2
 
 [node name="Branderburgia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0.72549, 1, 1, 0.486275)
-polygon = PackedVector2Array(258, 288, 252, 306, 264, 318, 258, 354, 270, 378, 234, 384, 228, 396, 186, 396, 180, 360, 126, 336, 126, 270, 72, 246, 114, 228, 168, 240, 210, 204, 228, 228, 240, 222, 240, 246, 228, 264, 258, 288, 216, 306, 204, 294, 192, 282, 168, 294, 168, 312, 216, 306)
+polygon = PackedVector2Array(258, 288, 252, 306, 264, 318, 258, 354, 270, 378, 234, 384, 228, 396, 186, 396, 180, 360, 126, 336, 126, 270, 72, 246, 114, 228, 168, 240, 210, 204, 228, 228, 240, 222, 240, 246, 228, 264, 258, 288, 216, 306, 192, 282, 168, 294, 168, 312, 216, 306)
 
 [node name="Berlin" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(1, 0.643137, 1, 1)
@@ -134,7 +135,7 @@ texture_repeat = 3
 color = Color(0.560784, 0.627451, 0.490196, 0.760784)
 texture = ExtResource("2_l8dkd")
 texture_scale = Vector2(2, 2)
-polygon = PackedVector2Array(594, 522, 588, 516, 582, 498, 582, 498, 564, 498, 528, 510, 528, 522, 522, 528, 510, 546, 558, 546, 576, 534, 600, 546, 594, 564, 558, 546, 516, 546, 534, 576, 552, 594, 558, 612, 576, 612, 576, 600, 612, 594, 624, 606, 654, 588, 648, 552, 636, 528, 642, 504, 612, 516, 612, 522)
+polygon = PackedVector2Array(594, 522, 588, 516, 582, 498, 564, 498, 528, 510, 528, 522, 522, 528, 510, 546, 516, 546, 534, 576, 558, 546, 576, 534, 600, 546, 594, 564, 558, 546, 534, 576, 552, 594, 558, 612, 576, 612, 576, 600, 612, 594, 624, 606, 654, 588, 648, 552, 636, 528, 642, 504, 612, 516, 612, 522)
 
 [node name="Cracow" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(1, 0.360784, 0.34902, 0.662745)
@@ -146,7 +147,7 @@ polygon = PackedVector2Array(654, 588, 690, 594, 696, 606, 732, 618, 720, 576, 7
 
 [node name="Eastern Galicia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(0.117647, 0.0980392, 0.0941176, 0.466667)
-polygon = PackedVector2Array(732, 618, 756, 648, 768, 612, 804, 606, 810, 576, 822, 576, 864, 534, 846, 510, 798, 492, 780, 510, 780, 510, 780, 510, 774, 540, 798, 540, 792, 558, 774, 558, 774, 540, 780, 510, 720, 576)
+polygon = PackedVector2Array(732, 618, 756, 648, 768, 612, 804, 606, 810, 576, 822, 576, 864, 534, 846, 510, 798, 492, 780, 510, 774, 540, 798, 540, 792, 558, 774, 558, 774, 540, 780, 510, 720, 576)
 
 [node name="Lviv" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
 color = Color(1, 1, 0.396078, 0.290196)
@@ -206,9 +207,8 @@ script = ExtResource("3_2r7m4")
 [node name="Game UI" parent="UI" instance=ExtResource("4_d0mku")]
 
 [node name="Tank" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("6_w0ro8")]
-visible = false
-position = Vector2(416, 200)
+position = Vector2(150, 144)
 movement_target = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(168, 176)
+position = Vector2(444, 108)

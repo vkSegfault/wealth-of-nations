@@ -75,12 +75,12 @@ func _input(event):
 
 	# drag and move
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			#print("LMC Button is being pressed")
+		if event.button_index == MOUSE_BUTTON_MIDDLE and event.pressed:
+			#print("MMB Button is being pressed")
 			mouse_velocity = Vector2(0, 0)
 			LMC_pressed = true
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
-			#print("LMC Buttom released")
+		if event.button_index == MOUSE_BUTTON_MIDDLE and event.is_released():
+			#print("MMB Buttom released")
 			LMC_pressed = false
 			mouse_velocity = Vector2(0, 0)
 	
