@@ -68,11 +68,11 @@ layout_mode = 2
 
 [node name="ProvinceNameLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Province"
+text = "### Province"
 
 [node name="CountryNameLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-text = "Country"
+text = "### Country"
 
 [node name="PopLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -82,12 +82,6 @@ layout_mode = 2
 
 [node name="TerrainLabel" type="Label" parent="ProvinceView/PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-
-[node name="NextTurnButton" type="Button" parent="."]
-offset_left = 872.0
-offset_right = 880.0
-offset_bottom = 8.0
-text = "Next Week"
 
 [node name="MarketViewButton" type="Button" parent="."]
 offset_left = 1008.0
@@ -118,5 +112,18 @@ size_flags_horizontal = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="NextTurnButton" to="." method="_on_next_turn_button_pressed"]
+[node name="TurnInfo" type="HBoxContainer" parent="."]
+offset_left = 704.0
+offset_right = 907.0
+offset_bottom = 40.0
+
+[node name="TurnInfoLabel" type="Label" parent="TurnInfo"]
+layout_mode = 2
+text = "Week 1 - 2020"
+
+[node name="NextTurnButton" type="Button" parent="TurnInfo"]
+layout_mode = 2
+text = "Next Week"
+
 [connection signal="pressed" from="MarketViewButton" to="." method="_on_market_view_button_pressed"]
+[connection signal="pressed" from="TurnInfo/NextTurnButton" to="." method="_on_next_turn_button_pressed"]

@@ -4,7 +4,7 @@ class_name Country
 var _name: String
 var _capital: String
 var _color: Color
-var _production: Dictionary = { 'fish': 0, 'cars': 0 }
+var _production: Dictionary# = { 'fish': 0, 'cars': 0, 'silver': 0 }
 var _pop: int
 
 # ctor

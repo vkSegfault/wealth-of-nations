@@ -47,7 +47,7 @@ func _print_province_info( province_name, country_name ):
 	$ProvinceShortInfo/CountryName.text = country_name
 	$ProvinceShortInfo.visible = true
 
-func _show_province_details( province_name, country_name, pop, resource: String, resource_amount: int, terrain: String ):
+func _show_province_details( province_name, country_name, pop, resources, resources_amount, terrain: String ):
 	$ProvinceView.visible = true
 	$ProvinceView/PanelContainer/MarginContainer/GridContainer/ProvinceNameLabel.text = province_name
 	$ProvinceView/PanelContainer/MarginContainer/GridContainer/CountryNameLabel.text = country_name
@@ -55,7 +55,7 @@ func _show_province_details( province_name, country_name, pop, resource: String,
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/PopLabel.visible = true
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/PopLabel.text = "Pop: " + str(pop)
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.visible = true
-		$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.text = "Resource: " + str(resource_amount) + " " + resource
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.text = "Resource: " + str(resources_amount) + " " + str(resources)
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/TerrainLabel.visible = true
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/TerrainLabel.text = "Terrain: " + terrain
 	else:
@@ -75,7 +75,8 @@ func _print_country_info( country_name, pop, capital, production ):
 
 func _on_next_turn_button_pressed():
 	WorldState.next_turn()
-
+	var week_year: String = "Week " + str(WorldState.WEEK) + " - " + str(WorldState.YEAR)
+	$TurnInfo/TurnInfoLabel.text = week_year
 
 func _on_market_view_button_pressed():
 	$MarketView.visible = true

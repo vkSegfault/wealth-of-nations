@@ -23,13 +23,34 @@ func _ready():
 		province_instance.setName( i.name )
 		province_instance.shape = i.shape
 		province_instance.country = i.country.name if i.country is Dictionary else "SEA"
-		province_instance.resource = i.resource.name if i.resource is Dictionary else "## NO RESOURCE - FIX IT ##"
-		province_instance.resource_amount = i.resourceAmount if i.resourceAmount else 0
+		print( i.resourcesAmounts )
+		print( i.name + " " + str(i.resources) + " " + str( i.resourcesAmounts if i.resourcesAmounts else "NO RESOURCES" ) )
+		if not i.resources == []:
+			var resources_str: Array[String]
+			for r in i.resources:
+				resources_str.append( r.name )
+			province_instance.resources = resources_str
+		else:
+			# we may actually consider barran wastelands provinces that don't have any resources (?)
+			province_instance.resources = [ "### NO RESOURCE - FIX IT ###" ]
+#		var resources_str: Array[String]
+#		for r in i.resources:
+#			resources_str.append( r.name )
+#		print( resources_str )
+		#province_instance.resources = resources_str if not i.resources == [] else [ "### NO RESOURCE - FIX IT ###" ]
+		province_instance.resources_amount = i.resourcesAmounts if i.resourcesAmounts else []
 		province_instance.terrain = i.terrain.name if i.terrain else "### NO TERRAIN - FIX IT ###"
 		
 		# gather reosurces into global market supply
-		if WorldState.RESOURCES.has( i.resource.name ):
-			WorldState.RESOURCES[ i.resource.name ].supply += 1
+		# TODO: maybe first gather resources intro countries and then into global market
+		# right now we are iterating over all provinces twice...
+		if i.resourcesAmounts and ( i.resources.size() == i.resourcesAmounts.size() ):
+			for r in i.resources.size():
+				if WorldState.RESOURCES.has( i.resources[r].name ):
+					WorldState.RESOURCES[ i.resources[r].name ].supply += i.resourcesAmounts[r]
+		else:
+			print( "### ERROR: size of resources list doesn't match size of resourceAmounts lists - Skipping resource addition to global market" )
+			
 		
 		if i.color != null:
 			if i.color.size() == 4:
@@ -72,9 +93,8 @@ func _deserialize_provinces(file_path: String):
 			var vec2_int = Vector2( int(vec2_str[0]), int(vec2_str[1]) )
 			shape.append(vec2_int)
 		i.shape = shape
-		_check_duplicated_verts( i.shape, i.name )
 		
-		# if Country is not assigned to Province (it's <null> instead { 'name': 'Poland' }
+		# if Country is not assigned to Province (it's <null> instead e.g.: { 'name': 'Poland' }
 		if not i.country is Dictionary:
 			if i.terrain is Dictionary:			
 				if i.terrain.name == "sea":
@@ -85,10 +105,12 @@ func _deserialize_provinces(file_path: String):
 			else:
 				print( "### FIX IT ### Province without Terrain: " + i.name )
 			
-		# if Resource is not assigned to Province
-		if not i.resource is Dictionary:
-			print( "### FIX IT ### Province without Resource: " + i.name )
-			i.resource = { "name": "### MISSING RESOURCE ###" }
+		# if Resources are not assigned to Province then it's empty Array
+		if i.resources == []:
+			print( "### FIX IT ### Province without any Resource: " + i.name )
+			#i.resources = [{ "name": "### MISSING RESOURCE ###" }]
+		
+		print( i.resourcesAmounts )
 			
 	prov_file.close()
 	return data
@@ -117,8 +139,13 @@ func _gather_production_from_provinces_to_countries( deserialized_provinces ):
 			continue
 		for c in WorldState.COUNTRIES:
 			if c._name == p.country.name:  # if province belongs to country
-				if c._production.has( p.resource ):
-					c._production[p.resource] += 1
+				if p.resourcesAmounts and ( p.resources.size() == p.resourcesAmounts.size() ):
+					for r in p.resources.size():
+						print(p.resources[r])
+						if c._production.has( p.resources[r].name ):  # if resource alredy exist in country market
+							c._production[ p.resources[r].name ] += p.resourcesAmounts[r]
+						else:
+							c._production[ p.resources[r].name ] = p.resourcesAmounts[r]
 	for c in WorldState.COUNTRIES:
 		print( "{c} has {r}".format( { "c":c._name, "r": c._production} ) )
 
@@ -128,11 +155,3 @@ func get_country_instance( country_name: String ):
 			# DOES IT MAKE A COPY OR RETURNS REFERENCE???
 			# it seems it's reference to original one
 			return c
-
-func _check_duplicated_verts( verts: PackedVector2Array, prov_name: String ):
-	var deduplicated_verts: PackedVector2Array
-	for vert in verts:
-		if not vert in deduplicated_verts:
-			deduplicated_verts.append( vert )
-		else:
-			print( "### DUPS FOUND in: " + prov_name )

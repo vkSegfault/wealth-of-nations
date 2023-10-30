@@ -9,8 +9,8 @@ const BORDER_DEFAULT_COLOR = Color(0.4, 0.4, 0.4, 1)
 const BORDER_FOCUSED_COLOR = Color(0, 0, 0, 1)
 var country: String
 var pop: int
-var resource: String
-var resource_amount: int
+var resources #: Array[String]
+var resources_amount #: Array[int]
 var terrain: String
 
 var focused: bool = false
@@ -51,7 +51,7 @@ func _input(event):
 		if focused == true:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 				print( "Province Clicked: " + _province_name )
-				SignalRelay._province_clicked( _province_name, country, pop, resource, resource_amount, terrain )
+				SignalRelay._province_clicked( _province_name, country, pop, resources, resources_amount, terrain )
 	
 func setName( province_name: String ):
 	_province_name = province_name
