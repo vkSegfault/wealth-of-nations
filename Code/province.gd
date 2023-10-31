@@ -9,8 +9,8 @@ const BORDER_DEFAULT_COLOR = Color(0.4, 0.4, 0.4, 1)
 const BORDER_FOCUSED_COLOR = Color(0, 0, 0, 1)
 var country: String
 var pop: int
-var resources #: Array[String]
-var resources_amount #: Array[int]
+var resources = []
+var resources_amount = []
 var terrain: String
 
 var focused: bool = false

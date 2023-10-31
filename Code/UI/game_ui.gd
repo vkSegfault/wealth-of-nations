@@ -55,7 +55,10 @@ func _show_province_details( province_name, country_name, pop, resources, resour
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/PopLabel.visible = true
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/PopLabel.text = "Pop: " + str(pop)
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.visible = true
-		$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.text = "Resource: " + str(resources_amount) + " " + str(resources)
+		var resources_string: String = ""
+		for i in resources.size():
+			resources_string += ( "|" + str(resources[i]) + ": " + str(resources_amount[i]) + "| " )
+		$ProvinceView/PanelContainer/MarginContainer/GridContainer/ResourceLabel.text = "Resources: " + resources_string
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/TerrainLabel.visible = true
 		$ProvinceView/PanelContainer/MarginContainer/GridContainer/TerrainLabel.text = "Terrain: " + terrain
 	else:

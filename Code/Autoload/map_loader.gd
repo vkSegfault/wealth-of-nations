@@ -23,22 +23,21 @@ func _ready():
 		province_instance.setName( i.name )
 		province_instance.shape = i.shape
 		province_instance.country = i.country.name if i.country is Dictionary else "SEA"
-		print( i.resourcesAmounts )
-		print( i.name + " " + str(i.resources) + " " + str( i.resourcesAmounts if i.resourcesAmounts else "NO RESOURCES" ) )
-		if not i.resources == []:
-			var resources_str: Array[String]
-			for r in i.resources:
-				resources_str.append( r.name )
-			province_instance.resources = resources_str
+		
+		# if resources list size doesn't match resourcesAmounts list size then skip adding them to provinces
+		if i.resourcesAmounts and ( i.resources.size() == i.resourcesAmounts.size() ):
+			if not i.resources == []:
+				var resources_str: Array[String]= []
+				for r in i.resources:
+					resources_str.append( r.name )
+				province_instance.resources = resources_str
+			else:
+				# we may actually consider barran wastelands provinces that don't have any resources (?)
+				province_instance.resources = [ "### NO RESOURCE - FIX IT ###" ]
+			province_instance.resources_amount = i.resourcesAmounts if i.resourcesAmounts else []
 		else:
-			# we may actually consider barran wastelands provinces that don't have any resources (?)
-			province_instance.resources = [ "### NO RESOURCE - FIX IT ###" ]
-#		var resources_str: Array[String]
-#		for r in i.resources:
-#			resources_str.append( r.name )
-#		print( resources_str )
-		#province_instance.resources = resources_str if not i.resources == [] else [ "### NO RESOURCE - FIX IT ###" ]
-		province_instance.resources_amount = i.resourcesAmounts if i.resourcesAmounts else []
+			print( "### ERROR: size of resources list doesn't match size of resourceAmounts lists - they will be all empty" )
+		
 		province_instance.terrain = i.terrain.name if i.terrain else "### NO TERRAIN - FIX IT ###"
 		
 		# gather reosurces into global market supply

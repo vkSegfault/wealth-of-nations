@@ -19,7 +19,7 @@ func _process(_delta):
 func next_turn():
 	print( "Next Turn starting..." )
 	
-	_update_turn()
+	_update_week_info()
 	
 	
 	print( "Updating Provinces..." )
@@ -29,11 +29,16 @@ func next_turn():
 			
 	print( "Updating Countries..." )
 	for c in COUNTRIES:
-		pass
+		for p in PROVINCES:
+			if c._name == p.country:
+				#print( "Updating " + p.getName() + " of " + c._name )
+				for i in p.resources.size():
+					print( p.getName() + " is producing " + str(p.resources_amount[i]) + " " + str(p.resources[i]) )
+					#c._production[]
 	
 	print( "Next Turn finished" )
 
-func _update_turn():
+func _update_week_info():
 	if WEEK == 52:
 		WEEK = 1
 		YEAR += 1
