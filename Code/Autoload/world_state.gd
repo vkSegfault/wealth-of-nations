@@ -3,7 +3,7 @@ extends Node
 var COUNTRIES = []
 var PROVINCES = []
 var RESOURCES = {}
-var player_country: Country   # country the player chose
+var player_country: Country   # country the player choose
 
 var WEEK: int = 1
 var YEAR: int = 2020
@@ -24,8 +24,10 @@ func next_turn():
 	
 	print( "Updating Provinces..." )
 	for p in PROVINCES:
-		if p.getName() == "Lviv":
-			p.setColor( Color( 0, 0, 50 ) )
+		# gather resources into world market from every province
+		for i in p.resources.size():
+			RESOURCES[p.resources[i]]["supply"] += p.resources_amount[i]
+			
 			
 	print( "Updating Countries..." )
 	for c in COUNTRIES:
@@ -35,7 +37,7 @@ func next_turn():
 				for i in p.resources.size():
 					#print( p.getName() + " is producing " + str(p.resources_amount[i]) + " " + str(p.resources[i]) )
 					c._production[p.resources[i]] += p.resources_amount[i]
-		print( c._production )
+		print( c._name + " produces " + str(c._production) )
 	
 	print( "Next Turn finished" )
 

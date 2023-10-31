@@ -5,6 +5,7 @@ var _name: String
 var _capital: String
 var _color: Color
 var _production: Dictionary = {}
+var _demand: Dictionary = {}
 var _pop: int
 
 # ctor

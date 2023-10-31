@@ -74,4 +74,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Price"
 
+[node name="resources_rows" type="GridContainer" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/VFlowContainer/CloseButton" to="." method="_on_close_button_pressed"]
