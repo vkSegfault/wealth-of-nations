@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	print_debug( WorldState.RESOURCES )
+	#print_debug( WorldState.RESOURCES )
 	for r in WorldState.RESOURCES:
 		
 		

@@ -33,8 +33,9 @@ func next_turn():
 			if c._name == p.country:
 				#print( "Updating " + p.getName() + " of " + c._name )
 				for i in p.resources.size():
-					print( p.getName() + " is producing " + str(p.resources_amount[i]) + " " + str(p.resources[i]) )
-					#c._production[]
+					#print( p.getName() + " is producing " + str(p.resources_amount[i]) + " " + str(p.resources[i]) )
+					c._production[p.resources[i]] += p.resources_amount[i]
+		print( c._production )
 	
 	print( "Next Turn finished" )
 
