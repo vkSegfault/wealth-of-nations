@@ -197,6 +197,50 @@ polygon = PackedVector2Array(678, 402, 660, 390, 666, 384, 678, 384, 678, 354, 7
 color = Color(1, 0.188235, 0.52549, 0.639216)
 polygon = PackedVector2Array(474, 474, 486, 462, 486, 444, 456, 432, 444, 438, 432, 432, 420, 432, 414, 450, 395.783, 479.148, 384, 498, 408, 516, 432, 510, 426, 522, 420, 528, 438, 546, 450, 540, 450, 528, 468, 516, 468, 498, 480, 492)
 
+[node name="Saxony" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.258824, 0.172549, 0.14902, 0.623529)
+polygon = PackedVector2Array(270, 378, 234, 384, 228, 396, 228, 432, 216, 438, 204, 426, 216, 414, 228, 414, 228, 396, 186, 396, 180, 360, 174, 378, 162, 372, 132, 384, 126, 390, 150, 396, 150, 414, 126, 414, 132, 426, 150, 432, 156, 444, 132, 450, 132, 468, 114, 474, 114, 486, 138, 504, 156, 486, 174, 486, 252, 438, 246, 426, 258, 426, 252, 456, 270, 420, 264, 408)
+
+[node name="Saxony-Anhalt" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 0.67451, 0.65098, 0.709804)
+polygon = PackedVector2Array(162, 372, 174, 378, 180, 360, 126, 336, 126, 270, 90, 252, 84, 264, 72, 270, 60, 264, 42, 276, 60, 306, 60, 342, 36, 348, 42, 378, 54, 384, 60, 402, 78, 402, 90, 426, 132, 438, 132, 426, 126, 414, 126, 390, 132, 384)
+
+[node name="Leipzig" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.752941, 1, 0.407843, 0.596078)
+polygon = PackedVector2Array(126, 390, 150, 396, 150, 414, 126, 414)
+
+[node name="Thuringia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.403922, 0.780392, 0.92549, 0.729412)
+polygon = PackedVector2Array(90, 426, 132, 438, 132, 426, 150, 432, 156, 444, 132, 450, 132, 468, 114, 474, 114, 486, 90, 492, 84, 480, 72, 486, 78, 504, 60, 492, 48, 492, 54, 504, 42, 504, 18, 480, 6, 474, 0, 456, 18, 420, 0, 408, 0, 402, 42, 378, 54, 384, 60, 402, 78, 402)
+
+[node name="Dresden" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 1, 0.87451, 0.67451)
+polygon = PackedVector2Array(204, 426, 216, 438, 228, 432, 228, 414, 216, 414)
+
+[node name="Schleswig-Holstein" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.407843, 0.560784, 0.627451, 0.847059)
+polygon = PackedVector2Array(36, 228, 54, 198, 42, 186, 60, 168, 42, 168, 60, 150, 60, 138, 72, 132, 60, 120, 60, 132, 42, 144, 12, 126, -6, 126, 6, 120, 6, 108, 0, 96, -18, 90, -36, 96, -66, 84, -60, 108, -48, 126, -72, 138, -54, 144, -48, 180, -36, 180, -12, 210, 12, 186)
+
+[node name="Hamburg" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 0.152941, 0.733333, 0.639216)
+polygon = PackedVector2Array(-12, 210, 12, 186, 36, 228, 0, 222)
+
+[node name="Franconia" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 0.917647, 0.745098, 0.682353)
+polygon = PackedVector2Array(6, 474, -24, 516, -54, 516, -48, 564, -30, 558, -36, 546, -18, 546, 12, 582, 30, 618, 66, 630, 84, 612, 66, 594, 54, 582, 60, 558, 78, 576, 66, 594, 84, 612, 126, 618, 132, 636, 150, 606, 192, 600, 156, 570, 150, 528, 138, 504, 114, 486, 90, 492, 84, 480, 72, 486, 78, 504, 60, 492, 48, 492, 54, 504, 42, 504)
+
+[node name="Nuremberg" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(1, 0.717647, 1, 0.8)
+polygon = PackedVector2Array(60, 558, 54, 582, 66, 594, 78, 576)
+
+[node name="Bavaria" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.219608, 0.631373, 1, 0.682353)
+polygon = PackedVector2Array(66, 630, 30, 618, 30, 642, 18, 642, 24, 660, 0, 672, 12, 696, 12, 732, -18, 744, 6, 750, 18, 768, 36, 744, 60, 744, 66, 756, 102, 744, 168, 732, 186, 750, 192, 726, 168, 690, 210, 666, 210, 648, 222, 654, 228, 630, 192, 600, 150, 606, 132, 636, 114, 678, 114, 702, 72, 696, 96, 672, 114, 678, 132, 636, 126, 618, 84, 612)
+
+[node name="Munich" type="Polygon2D" parent="WorldDrawDebug/Node2D"]
+color = Color(0.776471, 1, 0.329412, 0.729412)
+polygon = PackedVector2Array(72, 696, 96, 672, 114, 678, 114, 702)
+
 [node name="WorldInstances" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
