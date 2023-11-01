@@ -24,11 +24,11 @@ func _ready():
 	# CountryStats
 	for c in $CountryStats/PanelContainer/MarginContainer/GridContainer.get_children():
 		c.add_theme_font_size_override("font_size", 30)
-	_print_country_info( 
-		WorldState.player_country._name, 
-		WorldState.player_country._pop, 
-		WorldState.player_country._capital, 
-		WorldState.player_country._production
+	_print_country_info(
+		WorldState.PLAYER_COUNTRY._name, 
+		WorldState.PLAYER_COUNTRY._pop, 
+		WorldState.PLAYER_COUNTRY._capital, 
+		WorldState.PLAYER_COUNTRY._production
 	)
 
 
@@ -82,4 +82,5 @@ func _on_next_turn_button_pressed():
 	$TurnInfo/TurnInfoLabel.text = week_year
 
 func _on_market_view_button_pressed():
+	$MarketView.update()
 	$MarketView.visible = true

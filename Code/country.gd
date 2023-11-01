@@ -4,8 +4,10 @@ class_name Country
 var _name: String
 var _capital: String
 var _color: Color
-var _production: Dictionary = {}
+var _production: Dictionary = {} # e.g.: { "fish": 12, "cars": 3 }
 var _demand: Dictionary = {}
+var _stock: Dictionary = {}  # if we produce we can save it in stockpile instead providing on the market (but we won't get paid), if we don't produce we can buy it
+var _resources_to_stock: Array = []
 var _pop: int
 
 # ctor

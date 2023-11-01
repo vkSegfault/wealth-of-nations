@@ -3,7 +3,7 @@ extends Node
 var COUNTRIES = []
 var PROVINCES = []
 var RESOURCES = {}
-var player_country: Country   # country the player choose
+var PLAYER_COUNTRY: Country   # country the player choose
 
 var WEEK: int = 1
 var YEAR: int = 2020
@@ -21,12 +21,19 @@ func next_turn():
 	
 	_update_week_info()
 	
-	
 	print( "Updating Provinces..." )
 	for p in PROVINCES:
 		# gather resources into world market from every province
 		for i in p.resources.size():
-			RESOURCES[p.resources[i]]["supply"] += p.resources_amount[i]
+			# if resource is in list of resource that should be accumulated
+			if PLAYER_COUNTRY._resources_to_stock.has( p.resources[i] ):
+				if PLAYER_COUNTRY._stock.has( p.resources[i] ):
+					PLAYER_COUNTRY._stock[p.resources[i]] += p.resources_amount[i]
+				else:
+					PLAYER_COUNTRY._stock[p.resources[i]] = p.resources_amount[i]
+			else:
+				# if not provide it on the global market as usual
+				RESOURCES[p.resources[i]]["supply"] += p.resources_amount[i]
 			
 			
 	print( "Updating Countries..." )
@@ -38,6 +45,10 @@ func next_turn():
 					#print( p.getName() + " is producing " + str(p.resources_amount[i]) + " " + str(p.resources[i]) )
 					c._production[p.resources[i]] += p.resources_amount[i]
 		print( c._name + " produces " + str(c._production) )
+	
+	SignalRelay._next_turn()
+	
+	print( "Accumulating resources: " + str( PLAYER_COUNTRY._resources_to_stock ) )
 	
 	print( "Next Turn finished" )
 
