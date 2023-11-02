@@ -36,8 +36,8 @@ func _ready():
 		var demand_name_label = Label.new()
 		demand_name_label.name = "demand_name_label"
 		demand_name_label.mouse_filter = Control.MOUSE_FILTER_STOP
-		demand_name_label.tooltip_text = "World Demand ( Domestic Demand )"
-		var demand_to_display: String = str( demand ) + ( "(" + str(demand_domestic) + ")"  if demand_domestic != 0 else "" )
+		demand_name_label.tooltip_text = "World Demand"
+		var demand_to_display: String = str( demand )
 		demand_name_label.text = str( demand_to_display )
 		resource_row.add_child( demand_name_label )
 		
@@ -45,17 +45,41 @@ func _ready():
 		space_panel2.custom_minimum_size.x = 80
 		resource_row.add_child( space_panel2 )
 		
+		var demand_domestic_label = Label.new()
+		demand_domestic_label.name = "demand_domestic_label"
+		demand_domestic_label.mouse_filter = Control.MOUSE_FILTER_STOP
+		demand_domestic_label.tooltip_text = "Domestic Demand"
+		var demand_domestic_to_display: String = ( "(" + str(demand_domestic) + ")"  if demand_domestic != 0 else "" )
+		demand_domestic_label.text = str( demand_domestic_to_display )
+		resource_row.add_child( demand_domestic_label )
+		
+		var space_panel5 = Panel.new()
+		space_panel5.custom_minimum_size.x = 160
+		resource_row.add_child( space_panel5 )
+		
 		var supply_name_label = Label.new()
 		supply_name_label.name = "supply_name_label"
 		supply_name_label.mouse_filter = Control.MOUSE_FILTER_STOP
 		supply_name_label.tooltip_text = "World Supply ( Domestic Supply )"
-		var supply_to_display: String = str( supply ) + ( "(" + str(supply_domestic) + ")" if supply_domestic != 0 else "" )
+		var supply_to_display: String = str( supply )
 		supply_name_label.text = str( supply_to_display )
 		resource_row.add_child( supply_name_label )
 		
 		var space_panel3 = Panel.new()
 		space_panel3.custom_minimum_size.x = 60
 		resource_row.add_child( space_panel3 )
+		
+		var supply_domestic_label = Label.new()
+		supply_domestic_label.name = "supply_domestic_label"
+		supply_domestic_label.mouse_filter = Control.MOUSE_FILTER_STOP
+		supply_domestic_label.tooltip_text = "Domestic Supply (Percentage of Domestic Supply in World Supply)"
+		var supply_domestic_to_display: String = ( "(" + str(supply_domestic) + ")" if supply_domestic != 0 else "" )
+		supply_domestic_label.text = str( supply_domestic_to_display )
+		resource_row.add_child( supply_domestic_label )
+		
+		var space_panel6 = Panel.new()
+		space_panel6.custom_minimum_size.x = 160
+		resource_row.add_child( space_panel6 )
 		
 		var price_name_label = Label.new()
 		price_name_label.name = "price_name_label"
@@ -106,12 +130,20 @@ func update():
 		var resource_row = get_node_or_null("PanelContainer/MarginContainer/GridContainer/resources_rows/" + r)
 		if resource_row:
 			var demand_label = get_node_or_null("PanelContainer/MarginContainer/GridContainer/resources_rows/" + r +"/demand_name_label")
-			var demand_to_display: String = str( demand ) + ( "(" + str(demand_domestic) + ")"  if demand_domestic != 0 else "" )
+			var demand_to_display: String = str( demand )
 			demand_label.text = str( demand_to_display )
 			
+			var demand_domestic_label = get_node_or_null("PanelContainer/MarginContainer/GridContainer/resources_rows/" + r +"/demand_domestic_label")
+			var demand_domestic_to_display: String = ( str(demand_domestic) if demand_domestic != 0 else "0" ) + "(" + str(100 * demand_domestic/demand) + "%)"
+			demand_domestic_label.text = str( demand_domestic_to_display )
+			
 			var supply_label = get_node_or_null("PanelContainer/MarginContainer/GridContainer/resources_rows/" + r +"/supply_name_label")
-			var supply_to_display: String = str( supply ) + ( "(" + str(supply_domestic) + ")" if supply_domestic != 0 else "" )
+			var supply_to_display: String = str( supply )
 			supply_label.text = str( supply_to_display )
+			
+			var supply_domestic_label = get_node_or_null("PanelContainer/MarginContainer/GridContainer/resources_rows/" + r +"/supply_domestic_label")
+			var supply_domestic_to_display: String = ( str(supply_domestic) if supply_domestic != 0 else "0" ) + "(" + str(100 * supply_domestic/supply) + "%)"
+			supply_domestic_label.text = str( supply_domestic_to_display )
 			
 			var price_label = get_node_or_null("PanelContainer/MarginContainer/GridContainer/resources_rows/" + r +"/price_name_label")
 			price_label.text = str( demand/supply )

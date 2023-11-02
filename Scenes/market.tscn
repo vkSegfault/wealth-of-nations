@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://20cthkenhr81"]
+[gd_scene load_steps=4 format=3 uid="uid://20cthkenhr81"]
 
 [ext_resource type="Script" path="res://Code/market.gd" id="1_k0p0s"]
+
+[sub_resource type="Theme" id="Theme_40ypl"]
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrsek"]
+bg_color = Color(0.6, 0.6, 0.6, 0.784314)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0.862745)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="MarketView" type="Control"]
 layout_mode = 3
@@ -15,6 +31,8 @@ script = ExtResource("1_k0p0s")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = SubResource("Theme_40ypl")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrsek")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -58,6 +76,14 @@ layout_mode = 2
 layout_mode = 2
 text = "Demand"
 
+[node name="Panel6" type="Panel" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DemandDomesticLabel" type="Label" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
+layout_mode = 2
+text = "Domestic Demand"
+
 [node name="Panel3" type="Panel" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
@@ -65,6 +91,14 @@ layout_mode = 2
 [node name="SupplyLabel" type="Label" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
 layout_mode = 2
 text = "Supply"
+
+[node name="Panel7" type="Panel" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="SupplyDomesticLabel" type="Label" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
+layout_mode = 2
+text = "Domestic Supply"
 
 [node name="Panel4" type="Panel" parent="PanelContainer/MarginContainer/GridContainer/VFlowContainer2"]
 custom_minimum_size = Vector2(20, 0)
