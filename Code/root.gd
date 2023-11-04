@@ -19,12 +19,13 @@ func _prepare_provinces_to_export():
 	for i in get_node("/root/Root/WorldDrawDebug/Node2D").get_children():
 		
 		# if it's not Polygon2D then it's some debug temp shit probably and we don't care
-		if not (i is Polygon2D):
-			continue
+		for j in i.get_children():
+			if not (j is Polygon2D):
+				continue
 		
-		var provName = i.name
-		var shape = i.polygon
-		provinces_INTERNAL.append( { "name" = provName, "shape" = shape } )
+			var provName = j.name
+			var shape = j.polygon
+			provinces_INTERNAL.append( { "name" = provName, "shape" = shape } )
 		
 	print(">>> Prepared {p} provinces to be exported".format({"p": provinces_INTERNAL.size() }))
 	

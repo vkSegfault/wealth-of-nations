@@ -127,9 +127,5 @@ layout_mode = 2
 tooltip_text = "Starts next week"
 text = "Next Week"
 
-[node name="CheckButton" type="CheckButton" parent="."]
-offset_right = 44.0
-offset_bottom = 24.0
-
 [connection signal="pressed" from="MarketViewButton" to="." method="_on_market_view_button_pressed"]
 [connection signal="pressed" from="TurnInfo/NextTurnButton" to="." method="_on_next_turn_button_pressed"]
