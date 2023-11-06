@@ -9,6 +9,36 @@ func _ready():
 	var resources = _deserialize_resources( exports_path + "resourcesExported.json" )
 	for r in resources:
 		WorldState.RESOURCES[ r ] = { "demand": 0, "supply": 0 }
+		
+	# deserialize factories
+	var factories = _deserialize_factories( exports_path + "factoriesExported.json" )
+	print( "Printing factories..." )
+	for f in factories:
+		print(f)
+		if f.input_resources and f.input_resources_amount:  # if not null
+			if f.input_resources.size() != f.input_resources_amount.size():
+				print( "## Factory input resources vs amount mismatch - skipping" )
+				continue
+		else:
+			continue
+		
+		if f.output_resources and f.output_resources_amount:
+			if f.output_resources.size() != f.output_resources_amount.size():
+				print( "## Factory output resources vs amount mismatch - skipping" )
+				continue
+		else:
+			continue
+		
+		var input_res = {}
+		for i_res in f.input_resources.size():
+			input_res[ f.input_resources[i_res].name ] = f.input_resources_amount[i_res]
+		
+		var output_res = {}
+		for i_res in f.output_resources.size():
+			output_res[ f.output_resources[i_res] ] = f.output_resources_amount[i_res]
+		
+		var factory = Factory.new( f.name, f.price, f.timeToProduce, input_res, output_res )
+		WorldState.FACTORIES.append( factory )
 	
 	# deserialize countries
 	var countries = _deserialize_countries( exports_path + "countriesExported.json" )
@@ -120,6 +150,14 @@ func _deserialize_countries( file_path: String ):
 	for i in data:
 		pass
 	country_file.close()
+	return data
+	
+func _deserialize_factories( file_path: String ):
+	var factories_file = FileAccess.open( file_path, FileAccess.READ )
+	var data = JSON.parse_string( factories_file.get_as_text() )
+	for i in data:
+		pass
+	factories_file.close()
 	return data
 
 func _gather_pop_from_provinces_to_countries( deserialized_provinces ):

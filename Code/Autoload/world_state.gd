@@ -3,6 +3,7 @@ extends Node
 var COUNTRIES = []
 var PROVINCES = []
 var RESOURCES = {}
+var FACTORIES = []
 var PLAYER_COUNTRY: Country   # country the player choose
 
 var WEEK: int = 1
