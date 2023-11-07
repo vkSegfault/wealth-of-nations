@@ -83,7 +83,7 @@ func _ready():
 		
 		var price_name_label = Label.new()
 		price_name_label.name = "price_name_label"
-		price_name_label.text = str( demand / supply )
+		price_name_label.text = str( demand / supply ).pad_decimals(2)
 		resource_row.add_child( price_name_label )
 		
 		var space_panel4 = Panel.new()
@@ -146,7 +146,7 @@ func update():
 			supply_domestic_label.text = str( supply_domestic_to_display )
 			
 			var price_label = get_node_or_null("PanelContainer/MarginContainer/GridContainer/resources_rows/" + r +"/price_name_label")
-			price_label.text = str( demand/supply )
+			price_label.text = str( demand/supply ).pad_decimals(2)
 			
 			var stock_label = get_node_or_null("PanelContainer/MarginContainer/GridContainer/resources_rows/" + r +"/stock_name_label")
 			stock_label.text = str( stock )
