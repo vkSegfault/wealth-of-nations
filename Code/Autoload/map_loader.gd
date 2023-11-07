@@ -12,9 +12,7 @@ func _ready():
 		
 	# deserialize factories
 	var factories = _deserialize_factories( exports_path + "factoriesExported.json" )
-	print( "Printing factories..." )
 	for f in factories:
-		print(f)
 		if f.input_resources and f.input_resources_amount:  # if not null
 			if f.input_resources.size() != f.input_resources_amount.size():
 				print( "## Factory input resources vs amount mismatch - skipping" )
@@ -38,6 +36,7 @@ func _ready():
 			output_res[ f.output_resources[i_res] ] = f.output_resources_amount[i_res]
 		
 		var factory = Factory.new( f.name, f.price, f.timeToProduce, input_res, output_res )
+		print( "Adding new Factory: " + f.name )
 		WorldState.FACTORIES.append( factory )
 	
 	# deserialize countries
@@ -91,12 +90,25 @@ func _ready():
 				province_instance.setColor( Color( float(i.color[0])/255, i.color[1]/255, i.color[2]/255 ) )
 		else:
 			print( "### FIX IT ### {name} has no Color".format({ "name": i.name }) )
+			
+		if i.factory:
+			# print( "Printing province's factories..." )
+			# print( i.factory )
+			province_instance.factory = i.factory.name
+			var canned_food_factory_demand = _get_factory_demand( i.factory.name )
+			print( canned_food_factory_demand )
+			for i_res in canned_food_factory_demand.size():
+				print( canned_food_factory_demand.keys()[i_res] )
+				print( canned_food_factory_demand.values()[i_res] )
+				WorldState.RESOURCES[ canned_food_factory_demand.keys()[i_res] ].demand += canned_food_factory_demand.values()[i_res]
+			
+			
 		add_child(province_instance)
-		
 		WorldState.PROVINCES.append( province_instance )
 	
 	_gather_pop_from_provinces_to_countries( data )
 	_gather_production_from_provinces_to_countries( data )
+	_gather_demand_from_factories_to_countries( data )
 
 func _deserialize_resources( file_path: String ):
 	var resource_file = FileAccess.open( file_path, FileAccess.READ )
@@ -138,8 +150,6 @@ func _deserialize_provinces(file_path: String):
 		if i.resources == []:
 			print( "### FIX IT ### Province without any Resource: " + i.name )
 			#i.resources = [{ "name": "### MISSING RESOURCE ###" }]
-		
-		print( i.resourcesAmounts )
 			
 	prov_file.close()
 	return data
@@ -167,8 +177,8 @@ func _gather_pop_from_provinces_to_countries( deserialized_provinces ):
 		for c in WorldState.COUNTRIES:
 			if c._name == p.country.name:
 				c._pop += p.pop
-	for c in WorldState.COUNTRIES:
-		print( "{c} has {p} population in total".format({'c': c._name, 'p': c._pop}) )
+#	for c in WorldState.COUNTRIES:
+#		print( "{c} has {p} population in total".format({'c': c._name, 'p': c._pop}) )
 
 func _gather_production_from_provinces_to_countries( deserialized_provinces ):
 	for p in deserialized_provinces:
@@ -178,13 +188,30 @@ func _gather_production_from_provinces_to_countries( deserialized_provinces ):
 			if c._name == p.country.name:  # if province belongs to country
 				if p.resourcesAmounts and ( p.resources.size() == p.resourcesAmounts.size() ):
 					for r in p.resources.size():
-						print(p.resources[r])
+						# print(p.resources[r])
 						if c._production.has( p.resources[r].name ):  # if resource alredy exist in country market
 							c._production[ p.resources[r].name ] += p.resourcesAmounts[r]
 						else:
 							c._production[ p.resources[r].name ] = p.resourcesAmounts[r]
-	for c in WorldState.COUNTRIES:
-		print( "{c} has {r}".format( { "c":c._name, "r": c._production} ) )
+#	for c in WorldState.COUNTRIES:
+#		print( "{c} has {r}".format( { "c":c._name, "r": c._production} ) )
+
+func _gather_demand_from_factories_to_countries( deserialized_provinces ):
+	for p in deserialized_provinces:
+		if p.factory:  # if province has a factory
+			if not p.country is Dictionary:  # if it's Sea Province then Country is null
+				continue
+			for c in WorldState.COUNTRIES:
+				if c._name == p.country.name:
+					print( p.factory )
+					var demand = _get_factory_demand( p.factory.name )
+					print( demand )
+					for d_iter in demand.size():
+						if c._demand.has( demand.keys()[d_iter] ):
+							c._demand[ demand.keys()[d_iter] ] += demand.values()[d_iter]
+						else:
+							c._demand[ demand.keys()[d_iter] ] = demand.values()[d_iter]
+							
 
 func get_country_instance( country_name: String ):
 	for c in WorldState.COUNTRIES:
@@ -192,3 +219,8 @@ func get_country_instance( country_name: String ):
 			# DOES IT MAKE A COPY OR RETURNS REFERENCE???
 			# it seems it's reference to original one
 			return c
+
+func _get_factory_demand( factory_name: String ):
+	for f in WorldState.FACTORIES:
+		if factory_name == f._factory_name:
+			return f._resources_input

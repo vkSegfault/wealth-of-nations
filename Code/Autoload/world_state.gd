@@ -2,7 +2,7 @@ extends Node
 
 var COUNTRIES = []
 var PROVINCES = []
-var RESOURCES = {}
+var RESOURCES = {}  # supplyu
 var FACTORIES = []
 var PLAYER_COUNTRY: Country   # country the player choose
 
@@ -41,7 +41,7 @@ func next_turn():
 	for c in COUNTRIES:
 		for p in PROVINCES:
 			if c._name == p.country:
-				#print( "Updating " + p.getName() + " of " + c._name )
+				# gather resources into country
 				for i in p.resources.size():
 					#print( p.getName() + " is producing " + str(p.resources_amount[i]) + " " + str(p.resources[i]) )
 					c._production[p.resources[i]] += p.resources_amount[i]

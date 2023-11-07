@@ -11,6 +11,7 @@ var country: String
 var pop: int
 var resources = []
 var resources_amount = []
+var factory: String
 var terrain: String
 
 var focused: bool = false

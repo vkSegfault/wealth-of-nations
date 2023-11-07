@@ -1,14 +1,14 @@
 extends Node
 class_name Factory
 
-var _name: String
+var _factory_name: String
 var _price: int
 var _time_to_produce: int  # in weeks
 var _resources_input = {}  # e.g.: { fish: 2, cars: 12 }
 var _resources_output = {}
 
-func _init( name: String, price: int, time_to_produce: int, resources_input, resouces_output ):
-	_name = name
+func _init( factory_name: String, price: int, time_to_produce: int, resources_input, resouces_output ):
+	_factory_name = factory_name
 	_price = price
 	_time_to_produce = time_to_produce
 	_resources_input = resources_input
@@ -20,6 +20,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta):
 	pass
