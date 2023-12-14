@@ -13,8 +13,8 @@ func _ready():
 @warning_ignore("unused_parameter")
 func _process(delta):
 	pass
-	
-	
+
+
 func _prepare_provinces_to_export():
 	for i in get_node("/root/Root/WorldDrawDebug/Node2D").get_children():
 		

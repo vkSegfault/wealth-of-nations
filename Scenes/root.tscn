@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnv01iru6ahk0"]
+[gd_scene load_steps=14 format=3 uid="uid://dnv01iru6ahk0"]
 
 [ext_resource type="Script" path="res://Code/root.gd" id="1_sc36a"]
 [ext_resource type="Texture2D" uid="uid://box4g3i4juodg" path="res://External_Resources/MapChart_Map.png" id="2_0cuoh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bhq0exdmt1qiv" path="res://Scenes/tank.tscn" id="6_w0ro8"]
 [ext_resource type="Texture2D" uid="uid://cmce6benbol2" path="res://External_Resources/1607px-Map_of_Ukraine_with_Cities.png" id="7_xsytj"]
 [ext_resource type="Texture2D" uid="uid://cswllw1t4jlg6" path="res://External_Resources/Czech Republic/Czech_Rep._-_Bohemia,_Moravia_and_Silesia_III_(en).png" id="8_laooo"]
+[ext_resource type="Texture2D" uid="uid://cngwrhankhsch" path="res://External_Resources/Slovakia_districts.svg" id="9_dehil"]
 
 [node name="Root" type="Node"]
 script = ExtResource("1_sc36a")
@@ -85,6 +86,16 @@ offset_right = 2674.0
 offset_bottom = 1898.0
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("8_laooo")
+
+[node name="Slovakia" type="TextureRect" parent="WorldDrawDebug"]
+visible = false
+modulate = Color(1, 1, 1, 0.607843)
+offset_left = 366.0
+offset_top = 552.0
+offset_right = 1398.0
+offset_bottom = 1085.0
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("9_dehil")
 
 [node name="Node2D" type="Node2D" parent="WorldDrawDebug"]
 visible = false
@@ -448,6 +459,24 @@ polygon = PackedVector2Array(252, 456, 258, 426, 246, 426, 252, 438, 174, 486, 1
 [node name="South Bohemia" type="Polygon2D" parent="WorldDrawDebug/Node2D/Chech Republic"]
 color = Color(1, 0.513726, 0.427451, 0.694118)
 polygon = PackedVector2Array(342, 564, 312, 552, 294, 570, 210, 582, 216, 546, 192, 534, 150, 546, 144, 576, 180, 606, 222, 648, 228, 660, 246, 666, 264, 660, 270, 648, 282, 648, 282, 624, 300, 630, 294, 606, 330, 582)
+
+[node name="Slovakia" type="Node2D" parent="WorldDrawDebug/Node2D"]
+
+[node name="Bratislava" type="Polygon2D" parent="WorldDrawDebug/Node2D/Slovakia"]
+color = Color(1, 0.662745, 1, 0.721569)
+polygon = PackedVector2Array(396, 660, 408, 660, 420, 696, 402, 708, 378, 672)
+
+[node name="East Slovakia" type="Polygon2D" parent="WorldDrawDebug/Node2D/Slovakia"]
+color = Color(0.192157, 0.662745, 1, 0.705882)
+polygon = PackedVector2Array(588, 666, 612, 660, 630, 666, 648, 660, 666, 678, 678, 672, 696, 606, 690, 594, 654, 588, 624, 606, 612, 594, 576, 600, 576, 612, 558, 612, 564, 630, 576, 630)
+
+[node name="West Slovakia" type="Polygon2D" parent="WorldDrawDebug/Node2D/Slovakia"]
+color = Color(0.709804, 1, 0.741176, 0.67451)
+polygon = PackedVector2Array(420, 696, 402, 708, 432, 732, 486, 732, 498, 726, 492, 720, 498, 702, 504, 702, 510, 690, 492, 696, 498, 684, 492, 672, 480, 678, 474, 660, 498, 642, 480, 624, 468, 594, 462, 600, 462, 618, 420, 642, 408, 636, 396, 660, 408, 660)
+
+[node name="Central Slovakia" type="Polygon2D" parent="WorldDrawDebug/Node2D/Slovakia"]
+color = Color(1, 0.67451, 0.584314, 0.694118)
+polygon = PackedVector2Array(504, 594, 492, 570, 468, 594, 480, 624, 498, 642, 474, 660, 480, 678, 492, 672, 498, 684, 492, 696, 510, 690, 504, 702, 534, 702, 540, 684, 558, 696, 582, 684, 588, 666, 576, 630, 564, 630, 558, 612, 552, 594, 534, 576, 516, 594)
 
 [node name="WorldInstances" type="Node" parent="."]
 
